@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" />
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
@@ -27,6 +27,8 @@
     <![endif]-->
     <!--<script src="{{ asset('assets/scripts/modernizr.js') }}"></script>-->
     <script src="{{ asset('/js/modernizr-2.6.2.min.js') }}"></script>
+    <script src="{{ asset('/js/jspdf.min.js') }}"></script>
+    <!-- <script src="http://mrrio.github.io/jsPDF/dist/jspdf.debug.js"></script> -->
     <style>
         .help-block {
             color: #a94442;
@@ -785,7 +787,7 @@
                                 </div>
                                 <div class="col-sm-6 col-xs-12">
                                     <label class="control-label" for="applicant_mobile">Mobile<sup>*</sup></label>
-                                    <input type="text" class="form-control" name="applicant_mobile" id="applicant_mobile" placeholder="+" />
+                                    <input type="text" class="form-control" name="applicant_mobile" id="applicant_mobile" />
                                 </div>
                             </div>
                             <div class="form-group">
@@ -1228,7 +1230,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="col-xs-12 control-label" for="jointapp_licence_expiry_month">Licence Expiry Date<sup>*</sup></label>
-                                    
+
                                     <div class="col-md-4">
                                         <select class="form-control col-md-4" name="jointapp_licence_expiry_year" id="jointapp_licence_expiry_year">
                                             <option value="">-Year-</option>
@@ -1566,7 +1568,7 @@
                                 </div>
                                 <div class="col-sm-6 col-xs-12">
                                     <label class="control-label" for="applicant_mobile">Mobile<sup>*</sup></label>
-                                    <input type="text" class="form-control" name="jointapp_applicant_mobile" id="jointapp_applicant_mobile" placeholder="+" />
+                                    <input type="text" class="form-control" name="jointapp_applicant_mobile" id="jointapp_applicant_mobile" />
                                 </div>
                             </div>
                             <div class="form-group">
@@ -1856,7 +1858,9 @@
                         </fieldset>
                         <fieldset data-step="13" id="loanRepaymentTab">
                             <h3 class="section_head">Loan Repayments
-                                <span class="nav_blk"><a href="javascript:void(0)" class="prv_Tbtn btn-previous jointShowPrevious"></a><a href="javascript:void(0)" class="nxt_Tbtn btn-next"></a></span></h3>
+                                <span class="nav_blk">
+                                    <a href="javascript:void(0)" data-id="tab13previous" class="prv_Tbtn btn-previous jointShowPrevious"></a>
+                                    <a href="javascript:void(0)" data-id="tab12next" class="nxt_Tbtn btn-next"></a></span></h3>
                             <h5>Your Bank Account Details</h5>
                             <div class="form-group">
                                 <div><label class="control-label" for="repayment_bank_account_number">Bank Account Number<sup>*</sup></label>
@@ -1924,6 +1928,10 @@
                                 <div class="col-sm-12 col-xs-12">
                                     <span style="font-size:12px; font-weight:normal;"> *Direct Debit Disputes: The Direct Debit Terms and Conditions set out the responsibilities of each party and explain the process for any disputed transactions. If you have any questions about your payments, or wish to change or cancel these direct debit instructions, please contact us on 0508 738 765</span>
                                 </div>
+                            </div>
+                            <div class="form-group">
+                                <a href="javascript:void(0)" onclick="demoFromHTML()" class="pull-left">
+                                    Click Here to Download the Form</a>
                             </div>
                             <div class="nav_sec">
                                 <a href="javascript:void(0)" data-id="tab13previous" class="pull-left btn-previous main_button jointShowPrevious">
@@ -2046,7 +2054,74 @@
             </div>
         </div>
         <!-- /Section Online Form -->
+        <div id="jspdf_div" style="display:none">
+            <h3 class="section_head">Loan Repayments
+            </h3>
+            <h5>Your Bank Account Details</h5>
+            <div class="form-group">
+                <div><label class="control-label" for="">Bank Account Number<sup>*</sup></label>
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" class="" maxlength="2">
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" maxlength="4">
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" maxlength="7">
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" maxlength="3">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12 col-xs-12">
+                    <label class="control-label">Account Name<sup>*</sup></label>
+                    <input type="text" class="form-control" />
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="Privacy Check">
+                            I am authorized to operate this bank account independently.</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12 col-xs-12">
+                    <label class="control-label">Name of the Authorizer<sup>*</sup></label>
+                    <input type="text" class="form-control" />
+                    <!-- <span>It’s a legal requirement that you must be the named bank account holder or have formal authority to operate the bank account independently so you can set up a direct debit. If you are not authorized to operate this bank account, <br>you can call us on 0508 738 765 to request a direct debit form or contact us to arrange alternative payment arrangements.</span> -->
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-6 col-xs-12">
+                    <label class="control-label" for="repayment_start_date">Payment Start Date<sup>*</sup></label>
+                    <input type="text" />
+                    <!-- <span style="font-size:12px; font-weight:normal;"> (select from the available dates for when you'd like your payments to start)</span> -->
+                </div>
+                <div class="col-sm-6 col-xs-12">
+                    <label class="control-label" for="repayment_frequency">Preferred Frequency<sup>*</sup></label>
+                    <input type="text" />
+                    <!-- <span style="font-size:12px; font-weight:normal;"> Your payments will be taken on the same day each week, fortnight or month, or as close to as possible.</span> -->
+                </div>
+            </div>
 
+            <!-- <div class="info_sec">
+                <div class="info_block">
+                    <p>The start date you choose may alter depending on when the contracting is signed, and loan process is completed. A full telephone disclousure will take place before the finalized is discuss the payment schedule and direct debit confirmation letter will be sent to the postal address supplied once the loan has been opened.</p>
+                </div>
+            </div> -->
+            <br>
+            <!-- <div class="checkbox">
+                <label><input type="checkbox" value="Privacy Check">
+                    I agree to the direct debit terms and conditions. I authorize Smartcover Finance to process direct debits to my nominated account, and
+                    I authorize my bank to accept these payments. I’m aware that I can contact Smartcover Finance on 0508 738 765 to change/cancel my payment method at any time. *</label>
+            </div> -->
+            <br>
+            <div class="form-group">
+                <div class="col-sm-12 col-xs-12">
+                    <!-- <span style="font-size:12px; font-weight:normal;"> *Direct Debit Disputes: The Direct Debit Terms and Conditions set out the responsibilities of each party and explain the process for any disputed transactions. If you have any questions about your payments, or wish to change or cancel these direct debit instructions, please contact us on 0508 738 765</span> -->
+                </div>
+            </div>
+        </div>
     </div>
     <!-- /Main -->
 

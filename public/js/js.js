@@ -263,7 +263,7 @@
                         }else{
                             return false;
                         }
-                    },amount:true
+                    }
                 },
                 "version_number":{
                     required: function(element){
@@ -366,15 +366,16 @@
                 },
                 "repayment_frequency":{required:true},
                 "repayment_start_date":{required:true},
-                "repayment_bank_account_number1":{required:true,digits:true,minlength:2,maxlength:2},
-                "repayment_bank_account_number2":{required:true,digits:true,minlength:4,maxlength:4},
-                "repayment_bank_account_number3":{required:true,digits:true,minlength:7,maxlength:7},
-                "repayment_bank_account_number4":{required:true,digits:true,minlength:1,maxlength:3},
+                "repayment_bank_account_number1":{digits:true,required:true,digits:true,minlength:2,maxlength:2},
+                "repayment_bank_account_number2":{digits:true,required:true,digits:true,minlength:4,maxlength:4},
+                "repayment_bank_account_number3":{digits:true,required:true,digits:true,minlength:7,maxlength:7},
+                "repayment_bank_account_number4":{digits:true,required:true,digits:true,minlength:1,maxlength:3},
                 "repayment_bank_account_name":{required:true},
                 "need_custom_amount" : {required:true},
                 "repayment_bank_authorization" : {required:true},
                 "repayment_authorizer_name" : {required:true},
                 "repayment_authorization" : {required:true},
+                "privacy_act_agreement": {required:true},
                 "jointapp_licence_number":{
                     required: function(element){
                         if($('#jointapp_id_type').val() == "NZ Drivers License"){
@@ -575,7 +576,13 @@
                 "jointapp_employment_period_to": {required: "Please enter the to date."},
                 "jointapp_income": {required: "Please enter the income."},
                 "jointapp_income_frequency": {required: "Please select the income frequency."},
-                //"privacy_act_agreement":{required:"In order to proceed please accept the Privacy Waiver."}
+
+                "licence_number":{required: "Please enter valid licence number."},
+                "jointapp_licence_number":{required: "Please enter valid licence number."},
+                "repayment_bank_account_number1":{minlength:"Please enter at least 2 digits."},
+                "repayment_bank_account_number2":{minlength:"Please enter at least 4 digits."},
+                "repayment_bank_account_number3":{minlength:"Please enter at least 7 digits."},
+                "privacy_act_agreement":{required:"In order to proceed please accept the Privacy Waiver."}
             },
 
             invalidHandler: function (event, validator) { //display error alert on form submit
@@ -795,13 +802,13 @@
 
         // previous step
         $('#profileForm .btn-previous').on('click', function () {
-            if ($(this).hasClass("jointShowPrevious") && $("input[type='radio'][name='is_joint_application']:checked").val() == "no") {
+            // if ($(this).hasClass("jointShowPrevious") && $("input[type='radio'][name='is_joint_application']:checked").val() == "no") { 
 
-                $(this).parents('fieldset').fadeOut(400, function () {
-                    $('#vehicleTab').fadeIn();
-                    //$('ul.steps').find('li.active').removeClass('active').prev('li').addClass('active');
-                });
-            }
+            //     $(this).parents('fieldset').fadeOut(400, function () {
+            //         $('#vehicleTab').fadeIn();
+            //         //$('ul.steps').find('li.active').removeClass('active').prev('li').addClass('active');
+            //     });
+            // }
             if ($(this).data('id') == "tab3previous") {
                 $(this).parents('fieldset').fadeOut(400, function () {
                     $('#personalInformationTab').fadeIn();
@@ -842,7 +849,10 @@
                         //$('ul.steps').find('li.active').removeClass('active').prev('li').addClass('active');
                     });
                 } else {
-                    if ($("#jointapp_id_type").val() == "NZ Drivers License") {
+                    $(this).parents('fieldset').fadeOut(400, function () {
+                        $('#jointAppEmployeeTab').fadeIn();
+                    });
+                    /* if ($("#jointapp_id_type").val() == "NZ Drivers License") {
                         $(this).parents('fieldset').fadeOut(400, function () {
                             $('#jointAppLicenceUploadTab').fadeIn();
                         });
@@ -850,7 +860,7 @@
                         $(this).parents('fieldset').fadeOut(400, function () {
                             $('#jointAppPassportUploadTab').fadeIn();
                         });
-                    }
+                    } */
                 }
             } else {
                 $(this).parents('fieldset').fadeOut(400, function () {
