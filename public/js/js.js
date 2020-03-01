@@ -880,5 +880,16 @@
 
 
 })(jQuery);
+setTimeout(()=>{
+    if(confirm("Do you want to continue?")){
+        gotThere();
+    }else{
+        location.reload();
+    }
+},600000);
 
-
+function gotThere(){
+    setTimeout(()=>{
+        location.reload();
+    },(600000*2));
+}
