@@ -322,9 +322,9 @@
                             <div class="form-group">
                                 <label class="control-label col-xs-12" for="applicant_date_of_birth">Date of birth<sup>*</sup></label>
                                 <div class="col-md-4">
-                                    <select class="form-control col-md-4" name="applicant_birth_year" id="applicant_birth_year">
-                                        <option value="">-Year-</option>
-                                        @for ($i = 1930; $i <= date('Y'); $i++) <option value="{{ $i }}">{{ $i }}</option>
+                                    <select class="form-control col-md-4" name="applicant_birth_date" id="applicant_birth_date">
+                                        <option value="">-Date-</option>
+                                        @for ($i = 1; $i <= 31; $i++) <option value="{{ $i < 10?"0".$i:$i }}">{{ $i }}</option>
                                             @endfor
                                     </select>
                                 </div>
@@ -339,12 +339,13 @@
                                     </select>
                                 </div>
                                 <div class="col-md-4">
-                                    <select class="form-control col-md-4" name="applicant_birth_date" id="applicant_birth_date">
-                                        <option value="">-Date-</option>
-                                        @for ($i = 1; $i <= 31; $i++) <option value="{{ $i < 10?"0".$i:$i }}">{{ $i }}</option>
+                                    <select class="form-control col-md-4" name="applicant_birth_year" id="applicant_birth_year">
+                                        <option value="">-Year-</option>
+                                        @for ($i = 1930; $i <= date('Y'); $i++) <option value="{{ $i }}">{{ $i }}</option>
                                             @endfor
                                     </select>
                                 </div>
+                                
                                 {{--<input type="text" class="form-control input_date" name="applicant_date_of_birth" id="applicant_date_of_birth" placeholder="DD / MM / YY"/>--}}
                             </div>
                             <h4>Current Address</h4>
@@ -382,13 +383,6 @@
                             <div class="form-group">
                                 <label class="col-xs-12 control-label" for="years_at_current">Time at this address (Date From)<sup>*</sup></label>
                                 <div class="col-md-4">
-                                    <select class="form-control col-md-4" name="current_address_from_year" id="current_address_from_year">
-                                        <option value="">-Year-</option>
-                                        @for ($i = 1930; $i <= date('Y'); $i++) <option value="{{ $i }}">{{ $i }}</option>
-                                            @endfor
-                                    </select>
-                                </div>
-                                <div class="col-md-4">
                                     <select class="form-control col-md-4" name="current_address_from_month" id="current_address_from_month">
                                         <option value="">-Month-</option>
                                         @foreach($months as $key => $value)
@@ -396,6 +390,14 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                <div class="col-md-4">
+                                    <select class="form-control col-md-4" name="current_address_from_year" id="current_address_from_year">
+                                        <option value="">-Year-</option>
+                                        @for ($i = 1930; $i <= date('Y'); $i++) <option value="{{ $i }}">{{ $i }}</option>
+                                            @endfor
+                                    </select>
+                                </div>
+                                
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-4 col-xs-12">
@@ -448,13 +450,6 @@
                                 <div class="form-group">
                                     <label class="col-xs-12 control-label" for="licence_expiry_year">Licence Expiry Date<sup>*</sup></label>
                                     <div class="col-md-4">
-                                        <select class="form-control col-md-4" name="licence_expiry_year" id="licence_expiry_year">
-                                            <option value="">-Year-</option>
-                                            @for ($i = 1930; $i <= date('Y'); $i++) <option value="{{ $i }}">{{ $i }}</option>
-                                                @endfor
-                                        </select>
-                                    </div>
-                                    <div class="col-md-4">
                                         <select class="form-control col-md-4" name="licence_expiry_month" id="licence_expiry_month">
                                             <option value="">-Month-</option>
                                             @foreach($months as $key => $value)
@@ -462,6 +457,14 @@
                                             @endforeach
                                         </select>
                                     </div>
+                                    <div class="col-md-4">
+                                        <select class="form-control col-md-4" name="licence_expiry_year" id="licence_expiry_year">
+                                            <option value="">-Year-</option>
+                                            @for ($i = 1930; $i <= date('Y'); $i++) <option value="{{ $i }}">{{ $i }}</option>
+                                                @endfor
+                                        </select>
+                                    </div>
+                                    
                                 </div>
                             </div>
                             <div id="passport_identification" style="display:none">
@@ -473,10 +476,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-xs-12" for="jointapp_applicant_date_of_birth">Date Of Issue<sup>*</sup></label>
+                                    
                                     <div class="col-md-4">
-                                        <select class="form-control col-md-4" name="passport_issue_year" id="passport_issue_year">
-                                            <option value="">-Year-</option>
-                                            @for ($i = 1930; $i <= date('Y'); $i++) <option value="{{ $i }}">{{ $i }}</option>
+                                        <select class="form-control col-md-4" name="passport_issue_date" id="passport_issue_date">
+                                            <option value="">-Date-</option>
+                                            @for ($i = 1; $i <= 31; $i++) <option value="{{ $i < 10?"0".$i:$i }}">{{ $i }}</option>
                                                 @endfor
                                         </select>
                                     </div>
@@ -490,19 +494,20 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4">
-                                        <select class="form-control col-md-4" name="passport_issue_date" id="passport_issue_date">
-                                            <option value="">-Date-</option>
-                                            @for ($i = 1; $i <= 31; $i++) <option value="{{ $i < 10?"0".$i:$i }}">{{ $i }}</option>
+                                        <select class="form-control col-md-4" name="passport_issue_year" id="passport_issue_year">
+                                            <option value="">-Year-</option>
+                                            @for ($i = 1930; $i <= date('Y'); $i++) <option value="{{ $i }}">{{ $i }}</option>
                                                 @endfor
                                         </select>
                                     </div>
+                                    
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-xs-12" for="passport_expiry_year">Expiry Date<sup>*</sup></label>
                                     <div class="col-md-4">
-                                        <select class="form-control col-md-4" name="passport_expiry_year" id="passport_expiry_year">
-                                            <option value="">-Year-</option>
-                                            @for ($i = 1930; $i <= date('Y'); $i++) <option value="{{ $i }}">{{ $i }}</option>
+                                        <select class="form-control col-md-4" name="passport_expiry_date" id="passport_expiry_date">
+                                            <option value="">-Date-</option>
+                                            @for ($i = 1; $i <= 31; $i++) <option value="{{ $i < 10?"0".$i:$i }}">{{ $i }}</option>
                                                 @endfor
                                         </select>
                                     </div>
@@ -516,9 +521,9 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4">
-                                        <select class="form-control col-md-4" name="passport_expiry_date" id="passport_expiry_date">
-                                            <option value="">-Date-</option>
-                                            @for ($i = 1; $i <= 31; $i++) <option value="{{ $i < 10?"0".$i:$i }}">{{ $i }}</option>
+                                        <select class="form-control col-md-4" name="passport_expiry_year" id="passport_expiry_year">
+                                            <option value="">-Year-</option>
+                                            @for ($i = 1930; $i <= date('Y'); $i++) <option value="{{ $i }}">{{ $i }}</option>
                                                 @endfor
                                         </select>
                                     </div>
@@ -1109,9 +1114,9 @@
                             <div class="form-group">
                                 <label class="control-label col-xs-12" for="jointapp_applicant_date_of_birth">Date of birth<sup>*</sup></label>
                                 <div class="col-md-4">
-                                    <select class="form-control col-md-4" name="jointapp_applicant_birth_year" id="jointapp_applicant_birth_year">
-                                        <option value="">-Year-</option>
-                                        @for ($i = 1930; $i <= date('Y'); $i++) <option value="{{ $i }}">{{ $i }}</option>
+                                    <select class="form-control col-md-4" name="jointapp_applicant_birth_date" id="jointapp_applicant_birth_date">
+                                        <option value="">-Date-</option>
+                                        @for ($i = 1; $i <= 31; $i++) <option value="{{ $i < 10?"0".$i:$i }}">{{ $i }}</option>
                                             @endfor
                                     </select>
                                 </div>
@@ -1125,12 +1130,13 @@
                                     </select>
                                 </div>
                                 <div class="col-md-4">
-                                    <select class="form-control col-md-4" name="jointapp_applicant_birth_date" id="jointapp_applicant_birth_date">
-                                        <option value="">-Date-</option>
-                                        @for ($i = 1; $i <= 31; $i++) <option value="{{ $i < 10?"0".$i:$i }}">{{ $i }}</option>
+                                    <select class="form-control col-md-4" name="jointapp_applicant_birth_year" id="jointapp_applicant_birth_year">
+                                        <option value="">-Year-</option>
+                                        @for ($i = 1930; $i <= date('Y'); $i++) <option value="{{ $i }}">{{ $i }}</option>
                                             @endfor
                                     </select>
                                 </div>
+                                
                                 {{--<input type="text" class="form-control input_date" name="applicant_date_of_birth" id="applicant_date_of_birth" placeholder="DD / MM / YY"/>--}}
                             </div>
                             <h4>Joint Application Current Address</h4>
@@ -1168,18 +1174,18 @@
                             <div class="form-group">
                                 <label class="col-xs-12 control-label" for="jointapp_current_address_from_year">Time at this address (Date From)<sup>*</sup></label>
                                 <div class="col-md-4">
-                                    <select class="form-control col-md-4" name="jointapp_current_address_from_year" id="jointapp_current_address_from_year">
-                                        <option value="">-Year-</option>
-                                        @for ($i = 1930; $i <= date('Y'); $i++) <option value="{{ $i }}">{{ $i }}</option>
-                                            @endfor
-                                    </select>
-                                </div>
-                                <div class="col-md-4">
                                     <select class="form-control col-md-4" name="jointapp_current_address_from_month" id="jointapp_current_address_from_month">
                                         <option value="">-Month-</option>
                                         @foreach($months as $key => $value)
                                         <option value="{{ $value }}">{{ $key }}</option>
                                         @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <select class="form-control col-md-4" name="jointapp_current_address_from_year" id="jointapp_current_address_from_year">
+                                        <option value="">-Year-</option>
+                                        @for ($i = 1930; $i <= date('Y'); $i++) <option value="{{ $i }}">{{ $i }}</option>
+                                            @endfor
                                     </select>
                                 </div>
                             </div>
@@ -1234,19 +1240,20 @@
                                 <div class="form-group">
                                     <label class="col-xs-12 control-label" for="jointapp_licence_expiry_month">Licence Expiry Date<sup>*</sup></label>
 
-                                    <div class="col-md-4">
-                                        <select class="form-control col-md-4" name="jointapp_licence_expiry_year" id="jointapp_licence_expiry_year">
-                                            <option value="">-Year-</option>
-                                            @for ($i = 1930; $i <= date('Y'); $i++) <option value="{{ $i }}">{{ $i }}</option>
-                                                @endfor
-                                        </select>
-                                    </div>
+                                    
                                     <div class="col-md-4">
                                         <select class="form-control col-md-4" name="jointapp_licence_expiry_month" id="jointapp_licence_expiry_month">
                                             <option value="">-Month-</option>
                                             @foreach($months as $key => $value)
                                             <option value="{{ $value }}">{{ $key }}</option>
                                             @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <select class="form-control col-md-4" name="jointapp_licence_expiry_year" id="jointapp_licence_expiry_year">
+                                            <option value="">-Year-</option>
+                                            @for ($i = 1930; $i <= date('Y'); $i++) <option value="{{ $i }}">{{ $i }}</option>
+                                                @endfor
                                         </select>
                                     </div>
 
@@ -1262,9 +1269,9 @@
                                 <div class="form-group">
                                     <label class="control-label col-xs-12" for="jointapp_passport_issue_year">Date Of Issue<sup>*</sup></label>
                                     <div class="col-md-4">
-                                        <select class="form-control col-md-4" name="jointapp_passport_issue_year" id="jointapp_passport_issue_year">
-                                            <option value="">-Year-</option>
-                                            @for ($i = 1930; $i <= date('Y'); $i++) <option value="{{ $i }}">{{ $i }}</option>
+                                        <select class="form-control col-md-4" name="jointapp_passport_issue_date" id="jointapp_passport_issue_date">
+                                            <option value="">-Date-</option>
+                                            @for ($i = 1; $i <= 31; $i++) <option value="{{ $i < 10?"0".$i:$i }}">{{ $i }}</option>
                                                 @endfor
                                         </select>
                                     </div>
@@ -1278,19 +1285,20 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4">
-                                        <select class="form-control col-md-4" name="jointapp_passport_issue_date" id="jointapp_passport_issue_date">
-                                            <option value="">-Date-</option>
-                                            @for ($i = 1; $i <= 31; $i++) <option value="{{ $i < 10?"0".$i:$i }}">{{ $i }}</option>
+                                        <select class="form-control col-md-4" name="jointapp_passport_issue_year" id="jointapp_passport_issue_year">
+                                            <option value="">-Year-</option>
+                                            @for ($i = 1930; $i <= date('Y'); $i++) <option value="{{ $i }}">{{ $i }}</option>
                                                 @endfor
                                         </select>
                                     </div>
+                                    
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-xs-12" for="jointapp_passport_expiry_year">Expiry Date<sup>*</sup></label>
                                     <div class="col-md-4">
-                                        <select class="form-control col-md-4" name="jointapp_passport_expiry_year" id="jointapp_passport_expiry_year">
-                                            <option value="">-Year-</option>
-                                            @for ($i = 1930; $i <= date('Y'); $i++) <option value="{{ $i }}">{{ $i }}</option>
+                                        <select class="form-control col-md-4" name="jointapp_passport_expiry_date" id="jointapp_passport_expiry_date">
+                                            <option value="">-Date-</option>
+                                            @for ($i = 1; $i <= 31; $i++) <option value="{{ $i < 10?"0".$i:$i }}">{{ $i }}</option>
                                                 @endfor
                                         </select>
                                     </div>
@@ -1304,12 +1312,13 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4">
-                                        <select class="form-control col-md-4" name="jointapp_passport_expiry_date" id="jointapp_passport_expiry_date">
-                                            <option value="">-Date-</option>
-                                            @for ($i = 1; $i <= 31; $i++) <option value="{{ $i < 10?"0".$i:$i }}">{{ $i }}</option>
+                                        <select class="form-control col-md-4" name="jointapp_passport_expiry_year" id="jointapp_passport_expiry_year">
+                                            <option value="">-Year-</option>
+                                            @for ($i = 1930; $i <= date('Y'); $i++) <option value="{{ $i }}">{{ $i }}</option>
                                                 @endfor
                                         </select>
                                     </div>
+                                    
                                 </div>
                             </div>
                             <div class="nav_sec">
@@ -1895,7 +1904,7 @@
                                 <div class="col-sm-12 col-xs-12">
                                     <label class="control-label" for="repayment_authorizer_name">Name of the Authorizer<sup>*</sup></label>
                                     <input type="text" class="form-control" name="repayment_authorizer_name" id="repayment_authorizer_name" />
-                                    <span style="font-size:12px; font-weight:normal;">It’s a legal requirement that you must be the named bank account holder or have formal authority to operate the bank account independently so you can set up a direct debit. If you are not authorized to operate this bank account, <br>you can call us on 0508 738 765 to request a direct debit form or contact us to arrange alternative payment arrangements.</span>
+                                    <div style="font-size:12px; font-weight:normal;" class="text-justify">It’s a legal requirement that you must be the named bank account holder or have formal authority to operate the bank account independently so you can set up a direct debit. If you are not authorized to operate this bank account, you can call us on 0508 738 765 to request a direct debit form or contact us to arrange alternative payment arrangements.</div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -1917,19 +1926,19 @@
 
                             <div class="info_sec">
                                 <div class="info_block">
-                                    <p>The start date you choose may alter depending on when the contracting is signed, and loan process is completed. A full telephone disclousure will take place before the finalized is discuss the payment schedule and direct debit confirmation letter will be sent to the postal address supplied once the loan has been opened.</p>
+                                    <p class="text-justify">The start date you choose may alter depending on when the contracting is signed, and loan process is completed. A full telephone disclousure will take place before the finalized is discuss the payment schedule and direct debit confirmation letter will be sent to the postal address supplied once the loan has been opened.</p>
                                 </div>
                             </div>
                             <br>
                             <div class="checkbox">
-                                <label><input type="checkbox" name="repayment_authorization" value="Privacy Check" id="repayment_authorization">
+                                <label class="text-justify"><input type="checkbox" name="repayment_authorization" value="Privacy Check" id="repayment_authorization">
                                     I agree to the <a href="#" data-toggle="modal" data-target="#terms_and_conditions_modal">direct debit terms and conditions</a>. I authorize Smartcover Finance to process direct debits to my nominated account, and
                                     I authorize my bank to accept these payments. I’m aware that I can contact Smartcover Finance on 0508 738 765 to change/cancel my payment method at any time. *</label>
                             </div>
                             <br>
                             <div class="form-group">
                                 <div class="col-sm-12 col-xs-12">
-                                    <span style="font-size:12px; font-weight:normal;"> *Direct Debit Disputes: The Direct Debit Terms and Conditions set out the responsibilities of each party and explain the process for any disputed transactions. If you have any questions about your payments, or wish to change or cancel these direct debit instructions, please contact us on 0508 738 765</span>
+                                    <div style="font-size:12px; font-weight:normal;" class="text-justify"> *Direct Debit Disputes: The Direct Debit Terms and Conditions set out the responsibilities of each party and explain the process for any disputed transactions. If you have any questions about your payments, or wish to change or cancel these direct debit instructions, please contact us on 0508 738 765</div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -1948,7 +1957,7 @@
                             <div class="alert alert-danger" id="alertHolder" style="display:none;">
                                 <p>In order to proceed please accept the Privacy Waiver.</p>
                             </div>
-                            <div class="content_section using_listStyle" id="privacy_act">
+                            <div class="content_section using_listStyle text-justify" id="privacy_act">
                                 <h3>The Privacy Waiver act 1993</h3>
                                 <p>I/we authorise Smartcover Finance to collect, retain and use the personal information
                                     about me/us for the purpose of:</p>
@@ -2020,7 +2029,7 @@
                         <h4 class="modal-title">Debit Terms And Conditions</h4>
                     </div>
                     <div class="modal-body">
-                        <div class="content_section using_listStyle">
+                        <div class="content_section using_listStyle text-justify">
                             <h3>Specific conditions relating to notices and disputes</h3>
                             <p>Smartcover Finance Limited (the initiator) may only send a direct debit if I (the acceptor) have:</p>
                             <ul>

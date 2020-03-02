@@ -726,9 +726,6 @@
                     
                     $("#responseDataHolder").html("Please ensure that you are 18 years old and above.");
                     $(".responseHolder").show();
-                    $('html, body').animate({
-                        'scrollTop': $("#profileForm").position().top
-                    });
                     return false;
                 }
 
@@ -740,9 +737,6 @@
                             $("#loanTab").fadeIn();
                         });
                     }
-                     $('html, body').animate({
-                        'scrollTop': $("#profileForm").position().top
-                    });
                 } else if ($(this).data("id") == "tab1next") {
                     if ($("#applicant_id_type").val() == "NZ Drivers License") {
                         parent_fieldset.fadeOut(400, function () {
@@ -753,9 +747,6 @@
                             $('#applicantPassportUploadTab').fadeIn();
                         });
                     }
-                     $('html, body').animate({
-                        'scrollTop': $("#profileForm").position().top
-                    });
 
                 } else if ($(this).data("id") == "tab7next") {
                     if ($("#jointapp_id_type").val() == "NZ Drivers License") {
@@ -767,37 +758,25 @@
                             $('#jointAppPassportUploadTab').fadeIn();
                         });
                     }
-                     $('html, body').animate({
-                        'scrollTop': $("#profileForm").position().top
-                    });
                 } else if ($(this).data("id") == "tab2next" || $(this).data("id") == "tab3next") {
                     parent_fieldset.fadeOut(400, function () {
                         $("#contactInformationTab").fadeIn();
                     });
-                     $('html, body').animate({
-                        'scrollTop': $("#profileForm").position().top
-                    });
                 } else if ($(this).data('id') == "tab8next" || $(this).data('id') == "tab9next") {
                     parent_fieldset.fadeOut(400, function () {
                         $("#jointAppContactInformationTab").fadeIn();
-                    });
-                     $('html, body').animate({
-                        'scrollTop': $("#profileForm").position().top
                     });
                 } else {
                     parent_fieldset.fadeOut(400, function () {
                         $(this).next().fadeIn();
                     });
                 }
-
             } else {
-                $('html, body').animate({
-                    'scrollTop': $("#profileForm").position().top
-                });
                 return false;
             }
-
-
+            $('html, body').animate({
+                'scrollTop': $("#profileForm").position().top
+            });
         });
 
         // previous step
@@ -814,8 +793,7 @@
                     $('#personalInformationTab').fadeIn();
                     //$('ul.steps').find('li.active').removeClass('active').prev('li').addClass('active');
                 });
-            }
-            if ($(this).data('id') == "tab9previous") {
+            }else if ($(this).data('id') == "tab9previous") {
                 $(this).parents('fieldset').fadeOut(400, function () {
                     $('#jointApplicationTab').fadeIn();
                     //$('ul.steps').find('li.active').removeClass('active').prev('li').addClass('active');
@@ -868,6 +846,9 @@
                     //$('ul.steps').find('li.active').removeClass('active').prev('li').addClass('active');
                 });
             }
+            $('html, body').animate({
+                'scrollTop': $("#profileForm").position().top
+            });
         });
 
     })//onDocumentReady
@@ -886,11 +867,11 @@ setTimeout(()=>{
     }else{
         location.reload();
     }
-},600000);
+},(600000*3));
 
 function gotThere(){
     setTimeout(()=>{
-        alert("Your time is expired!")
+        alert("Time Expired!")
         location.reload();
-    },600000);
+    },(600000*6));
 }
