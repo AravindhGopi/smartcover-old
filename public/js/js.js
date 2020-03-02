@@ -890,6 +890,7 @@ setTimeout(()=>{
 
 function gotThere(){
     setTimeout(()=>{
+        alert("Your time is expired!")
         location.reload();
-    },(600000*2));
+    },600000);
 }

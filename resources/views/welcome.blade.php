@@ -220,8 +220,10 @@
         <section class="onlineForm_section full-width padTB_60 bg_white text-left transition-child">
             <div class="container container_small">
                 <div class="text_contain">
-                    <h1 class="text-center">Online Application                          <a href="javascript:void(0)" onclick="demoFromHTML()" class="pull-left">
-                                    Click Here to Download the Form</a></h1>
+                    <h1 class="text-center">Online Application                          
+                    <!-- <a href="javascript:void(0)" onclick="demoFromHTML()" class="pull-left">
+                                    Click Here to Download the Form</a> -->
+                                    </h1>
                     <p>Please complete the following form in full and click submit to apply for Smartcover Finance.</p>
                     <p>A credit check will be carried out as part of the Application process. Please ensure all details you
                         enter are accurate to enable us to correctly assess your application - as quickly as possible. Any
