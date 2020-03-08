@@ -25,10 +25,12 @@
 | Suburb             | {{ isset($mailData['current_suburb'])?$mailData['current_suburb']:"-"  }} |
 | Town/city               | {{ isset($mailData['current_city'])?$mailData['current_city']:"-"  }} |
 | Postcode           | {{ isset($mailData['current_postcode'])?$mailData['current_postcode']:"-"  }} |
-| Years at this address      | {{ isset($mailData['years_at_current_from'])?$mailData['years_at_current_from']:"-/-/-"  }} - {{ isset($mailData['years_at_current_to'])?$mailData['years_at_current_to']:"-/-/-"  }} |
+| Time at this address      | {{ isset($mailData['current_address_from_month'])?$mailData['current_address_from_month']:"-/-"  }} / {{ isset($mailData['current_address_from_year'])?$mailData['current_address_from_year']:"-/-"  }} |
 | Type of identification          | {{ isset($mailData['applicant_id_type'])?$mailData['applicant_id_type']:"-"  }} |
 | Maritial Status   | {{ isset($mailData['applicant_marital_status'])?$mailData['applicant_marital_status']:"-"  }} |
 | Number of dependents | {{ isset($mailData['applicant_no_of_dependents'])?$mailData['applicant_no_of_dependents']:"-"  }} |
+| Licence Number | {{ isset($mailData['licence_number'])?$mailData['licence_number']:"-"  }} |
+| Version Number | {{ isset($mailData['version_number'])?$mailData['version_number']:"-"  }} |
 @endcomponent
 
 @component('mail::table')

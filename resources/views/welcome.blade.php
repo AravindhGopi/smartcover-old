@@ -450,6 +450,13 @@
                                 <div class="form-group">
                                     <label class="col-xs-12 control-label" for="licence_expiry_year">Licence Expiry Date<sup>*</sup></label>
                                     <div class="col-md-4">
+                                        <select class="form-control col-md-4" name="licence_expiry_date" id="licence_expiry_date">
+                                            <option value="">-Date-</option>
+                                            @for ($i = 1; $i <= 31; $i++) <option value="{{ $i < 10?"0".$i:$i }}">{{ $i }}</option>
+                                                @endfor
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
                                         <select class="form-control col-md-4" name="licence_expiry_month" id="licence_expiry_month">
                                             <option value="">-Month-</option>
                                             @foreach($months as $key => $value)
@@ -460,8 +467,8 @@
                                     <div class="col-md-4">
                                         <select class="form-control col-md-4" name="licence_expiry_year" id="licence_expiry_year">
                                             <option value="">-Year-</option>
-                                            @for ($i = 1930; $i <= date('Y'); $i++) <option value="{{ $i }}">{{ $i }}</option>
-                                                @endfor
+                                            @for ($i = date('Y', strtotime('+10 years')); $i >= 1930; $i--) <option value="{{ $i }}">{{ $i }}</option>
+                                            @endfor
                                         </select>
                                     </div>
                                     
@@ -523,7 +530,7 @@
                                     <div class="col-md-4">
                                         <select class="form-control col-md-4" name="passport_expiry_year" id="passport_expiry_year">
                                             <option value="">-Year-</option>
-                                            @for ($i = 1930; $i <= date('Y'); $i++) <option value="{{ $i }}">{{ $i }}</option>
+                                            @for ($i = date('Y', strtotime('+10 years')); $i >= 1930; $i--) <option value="{{ $i }}">{{ $i }}</option>
                                                 @endfor
                                         </select>
                                     </div>
@@ -1239,7 +1246,13 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="col-xs-12 control-label" for="jointapp_licence_expiry_month">Licence Expiry Date<sup>*</sup></label>
-
+                                    <div class="col-md-4">
+                                        <select class="form-control col-md-4" name="jointapp_licence_expiry_date" id="jointapp_licence_expiry_date">
+                                            <option value="">-Date-</option>
+                                            @for ($i = 1; $i <= 31; $i++) <option value="{{ $i < 10?"0".$i:$i }}">{{ $i }}</option>
+                                                @endfor
+                                        </select>
+                                    </div>
                                     
                                     <div class="col-md-4">
                                         <select class="form-control col-md-4" name="jointapp_licence_expiry_month" id="jointapp_licence_expiry_month">
@@ -1252,7 +1265,7 @@
                                     <div class="col-md-4">
                                         <select class="form-control col-md-4" name="jointapp_licence_expiry_year" id="jointapp_licence_expiry_year">
                                             <option value="">-Year-</option>
-                                            @for ($i = 1930; $i <= date('Y'); $i++) <option value="{{ $i }}">{{ $i }}</option>
+                                            @for ($i = date('Y', strtotime('+10 years')); $i >= 1930; $i--) <option value="{{ $i }}">{{ $i }}</option>
                                                 @endfor
                                         </select>
                                     </div>
@@ -1314,7 +1327,7 @@
                                     <div class="col-md-4">
                                         <select class="form-control col-md-4" name="jointapp_passport_expiry_year" id="jointapp_passport_expiry_year">
                                             <option value="">-Year-</option>
-                                            @for ($i = 1930; $i <= date('Y'); $i++) <option value="{{ $i }}">{{ $i }}</option>
+                                            @for ($i = date('Y', strtotime('+10 years')); $i >= 1930; $i--) <option value="{{ $i }}">{{ $i }}</option>
                                                 @endfor
                                         </select>
                                     </div>
@@ -1926,7 +1939,7 @@
 
                             <div class="info_sec">
                                 <div class="info_block">
-                                    <p class="text-justify">The start date you choose may alter depending on when the contracting is signed, and loan process is completed. A full telephone disclousure will take place before the finalized is discuss the payment schedule and direct debit confirmation letter will be sent to the postal address supplied once the loan has been opened.</p>
+                                    <p class="text-justify">Please note: The start date you choose may alter depending on when the contract is signed and loan process is complete. A full telephone disclosure will take place before the contract is finalized to discuss the payment schedule and direct debit confirmation letter will be sent to the email address supplied once the loan has been opened.</p>
                                 </div>
                             </div>
                             <br>

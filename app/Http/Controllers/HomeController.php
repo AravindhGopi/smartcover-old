@@ -242,7 +242,8 @@ class HomeController extends Controller
         die("");*/
         // $data['secure_sign_agreed'] = isset($data['secure_sign_agreed'])?$data['secure_sign_agreed']:"no";
         //$emails = ['bejoy@mello.co.nz'];
-		$emails = ['bejoy@mello.co.nz'];
+        // $emails = ['bejoy@mello.co.nz'];
+        $emails=['j.aravindhgopi@gmail.com'];
         $output=View::make('xml.data')->with('mailData', $data)->render();
         $xml = "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n" . $output;
         Mail::to($emails)
