@@ -29,8 +29,15 @@
 | Type of identification          | {{ isset($mailData['applicant_id_type'])?$mailData['applicant_id_type']:"-"  }} |
 | Maritial Status   | {{ isset($mailData['applicant_marital_status'])?$mailData['applicant_marital_status']:"-"  }} |
 | Number of dependents | {{ isset($mailData['applicant_no_of_dependents'])?$mailData['applicant_no_of_dependents']:"-"  }} |
+@if(isset($mailData['applicant_id_type']) == "NZ Drivers License")
 | Licence Number | {{ isset($mailData['licence_number'])?$mailData['licence_number']:"-"  }} |
 | Version Number | {{ isset($mailData['version_number'])?$mailData['version_number']:"-"  }} |
+| Licence Expiry Date | {{ isset($mailData['licence_expiry_date'])?$mailData['licence_expiry_date']:"-"  }} / {{ isset($mailData['licence_expiry_month'])?$mailData['licence_expiry_month']:"-"  }} / {{ isset($mailData['licence_expiry_year'])?$mailData['licence_expiry_year']:"-"  }} |
+@else
+| Passport Number | {{ isset($mailData['passport_number'])?$mailData['passport_number']:"-"  }} |
+| Date Of Issue | {{ isset($mailData['passport_issue_date'])?$mailData['passport_issue_date']:"-"  }} / {{ isset($mailData['passport_issue_month'])?$mailData['passport_issue_month']:"-"  }} / {{ isset($mailData['passport_issue_year'])?$mailData['passport_issue_year']:"-"  }} |
+| Expiry Date | {{ isset($mailData['passport_expiry_date'])?$mailData['passport_expiry_date']:"-"  }} / {{ isset($mailData['passport_expiry_month'])?$mailData['passport_expiry_month']:"-"  }} / {{ isset($mailData['passport_expiry_year'])?$mailData['passport_expiry_year']:"-"  }} |
+@endif
 @endcomponent
 
 @component('mail::table')
@@ -55,20 +62,20 @@
 | Employment Details       |              |
 | ------------- |:-----------------:|
 | Employment status       | {{ isset($mailData['employment_status'])?$mailData['employment_status']:"-"  }}      |
+@if($mailData['employment_status'] == "Full Time Employed" || $mailData['employment_status'] == "Part Time Employed")
 | Job Title      | {{ isset($mailData['job_title'])?$mailData['job_title']:"-"  }} |
 | Have you been in employment for longer than 6 months?      | {{ isset($mailData['duration_of_employment'])?$mailData['duration_of_employment']:"-"  }} |
 | Employer name      | {{ isset($mailData['employer_name'])?$mailData['employer_name']:"-" }} |
 | Employer contact number      | {{ isset($mailData['employer_contact_number'])?$mailData['employer_contact_number']:"-"  }} |
 | Manager      | {{ isset($mailData['manager_name'])?$mailData['manager_name']:"-"  }} |
-| Employment Period      | {{ isset($mailData['employment_period_from'])?$mailData['employment_period_from']:"-/-/-"  }} - {{ isset($mailData['employment_period_to'])?$mailData['employment_period_to']:"-/-/-"  }} |
+| Employment Period      | {{ isset($mailData['employment_period_from'])?$mailData['employment_period_from']:"-/-/-"  }}|
+@endif
 | Income      | {{ isset($mailData['income'])?$mailData['income']:"-"  }} |
 | Income frequency      | {{ isset($mailData['income_frequency'])?$mailData['income_frequency']:"-"  }} |
-| Additional Income      | {{ isset($mailData['Is_additional_income'])?$mailData['Is_additional_income']:"-"  }} |
-| Source      | {{ isset($mailData['additional_income_source'])?$mailData['additional_income_source']:"-"  }} |
-| Amount of additional Income      | {{ isset($mailData['additional_income'])?$mailData['additional_income']:"-"  }} |
-| Living cost      | {{ isset($mailData['living_cost_type'])?$mailData['living_cost_type']:"-"  }} |
-| Amount      | {{ isset($mailData['living_cost_amount'])?$mailData['living_cost_amount']:"-"  }} |
-| Payment Frequency      | {{ isset($mailData['livingcost_frequency'])?$mailData['livingcost_frequency']:"-"  }} |
+| additional Income      | {{ isset($mailData['additional_income'])?$mailData['additional_income']:"-"  }} |
+| Accomodation Type      | {{ isset($mailData['accomodation_type'])?$mailData['accomodation_type']:"-"  }} |
+| Expense Amount      | {{ isset($mailData['expense_amount'])?$mailData['expense_amount']:"-"  }} |
+| Expense Frequency      | {{ isset($mailData['expense_frequency'])?$mailData['expense_frequency']:"-"  }} |
 @endcomponent
 
 @component('mail::table')
@@ -103,6 +110,15 @@
 | Type of identification      | {{ isset($mailData['jointapp__id_type'])?$mailData['jointapp__id_type']:"-"  }} |
 | Maritial Status      | {{ isset($mailData['jointapp_marital_status'])?$mailData['jointapp_marital_status']:"-"  }} |
 | Number of dependents      | {{ isset($mailData['jointapp_no_of_dependents'])?$mailData['jointapp_no_of_dependents']:"-"  }} |
+@if(isset($mailData['jointapp_id_type']) == "NZ Drivers License")
+| Licence Number | {{ isset($mailData['jointapp_licence_number'])?$mailData['jointapp_licence_number']:"-"  }} |
+| Version Number | {{ isset($mailData['jointapp_version_number'])?$mailData['jointapp_version_number']:"-"  }} |
+| Licence Expiry Date | {{ isset($mailData['jointapp_licence_expiry_date'])?$mailData['jointapp_licence_expiry_date']:"-"  }} / {{ isset($mailData['jointapp_licence_expiry_month'])?$mailData['jointapp_licence_expiry_month']:"-"  }} / {{ isset($mailData['jointapp_licence_expiry_year'])?$mailData['jointapp_licence_expiry_year']:"-"  }} |
+@else
+| Passport Number | {{ isset($mailData['jointapp_passport_number'])?$mailData['jointapp_passport_number']:"-"  }} |
+| Date Of Issue | {{ isset($mailData['jointapp_passport_issue_date'])?$mailData['jointapp_passport_issue_date']:"-"  }} / {{ isset($mailData['jointapp_passport_issue_month'])?$mailData['jointapp_passport_issue_month']:"-"  }} / {{ isset($mailData['jointapp_passport_issue_year'])?$mailData['jointapp_passport_issue_year']:"-"  }} |
+| Expiry Date | {{ isset($mailData['jointapp_passport_expiry_date'])?$mailData['jointapp_passport_expiry_date']:"-"  }} / {{ isset($mailData['jointapp_passport_expiry_month'])?$mailData['jointapp_passport_expiry_month']:"-"  }} / {{ isset($mailData['jointapp_passport_expiry_year'])?$mailData['jointapp_passport_expiry_year']:"-"  }} |
+@endif
 @endcomponent
 @endif
 
@@ -131,20 +147,20 @@
 | Joint Applicant: Employment Details       |              |
 | ------------- |:-----------------:|
 | Employment status       | {{ isset($mailData['jointapp_employment_status'])?$mailData['jointapp_employment_status']:"-"  }}      |
+@if($mailData['jointapp_employment_status'] == "Full Time Employed" || $mailData['jointapp_employment_status'] == "Part Time Employed")
 | Job Title      | {{ isset($mailData['jointapp_job_title'])?$mailData['jointapp_job_title']:"-"  }} |
 | Have you been in employment for longer than 6 months?      | {{ isset($mailData['jointapp_duration_of_employment'])?$mailData['jointapp_duration_of_employment']:"-"  }} |
 | Employer name      | {{ isset($mailData['jointapp_employer_name'])?$mailData['jointapp_employer_name']:"-"  }} |
 | Employer contact number      | {{ isset($mailData['jointapp_employer_contact_number'])?$mailData['jointapp_employer_contact_number']:"-"  }} |
 | Manager      | {{ isset($mailData['jointapp_manager_name'])?$mailData['jointapp_manager_name']:"-"  }} |
-| Employment Period      | {{ isset($mailData['jointapp_employment_period_from'])?$mailData['jointapp_employment_period_from']:"-/-/-"  }} - {{ isset($mailData['jointapp_employment_period_to'])?$mailData['jointapp_employment_period_to']:"-/-/-"  }} |
+| Employment Period      | {{ isset($mailData['jointapp_employment_period_from'])?$mailData['jointapp_employment_period_from']:"-/-/-"  }}|
+@endif
 | Income      | {{ isset($mailData['jointapp_income'])?$mailData['jointapp_income']:"-"  }} |
 | Income frequency      | {{ isset($mailData['jointapp_income_frequency'])?$mailData['jointapp_income_frequency']:"-"  }} |
-| Additional Income      | {{ isset($mailData['jointapp_Is_additional_income'])?$mailData['jointapp_Is_additional_income']:"-"  }} |
-| Source      | {{ isset($mailData['jointapp_additional_income_source'])?$mailData['jointapp_additional_income_source']:"-"  }} |
-| Amount of additional Income      | {{ isset($mailData['jointapp_additional_income'])?$mailData['jointapp_additional_income']:"-"  }} |
-| Living cost      | {{ isset($mailData['jointapp_living_cost_type'])?$mailData['jointapp_living_cost_type']:"-"  }} |
-| Living cost Amount      | {{ isset($mailData['jointapp_living_cost_amount'])?$mailData['jointapp_living_cost_amount']:"-"  }} |
-| Payment Frequency      | {{ isset($mailData['jointapp_livingcost_frequency'])?$mailData['jointapp_livingcost_frequency']:"-"  }} |
+| | additional Income      | {{ isset($mailData['jointapp_additional_income'])?$mailData['jointapp_additional_income']:"-"  }} |
+| Accomodation Type      | {{ isset($mailData['jointapp_accomodation_type'])?$mailData['jointapp_accomodation_type']:"-"  }} |
+| Expense Amount      | {{ isset($mailData['jointapp_expense_amount'])?$mailData['jointapp_expense_amount']:"-"  }} |
+| Expense Frequency      | {{ isset($mailData['jointapp_expense_frequency'])?$mailData['jointapp_expense_frequency']:"-"  }} |
 @endcomponent
 @endif
 
@@ -154,16 +170,22 @@
 | Loan amount       | {{ isset($mailData['loan_amount'])?$mailData['loan_amount']:"-"  }}      |
 | Loan Reason      | {{ isset($mailData['loan_reason'])?$mailData['loan_reason']:"-"  }} |
 | Name of Store (if any)      | {{ isset($mailData['loan_agent'])?$mailData['loan_agent']:"-"  }} |
-| Prefferred Week Day      | {{ isset($mailData['preffered_week_day'])?$mailData['preffered_week_day']:"-"  }} |
+@endcomponent
+
+@component('mail::table')
+| Loan Repayment Details       |              |
+| ------------- |:-----------------:|
+| Bank Account Number       | {{ isset($mailData['repayment_bank_account_number1'])?$mailData['repayment_bank_account_number1']:"-"  }} - {{ isset($mailData['repayment_bank_account_number2'])?$mailData['repayment_bank_account_number2']:"-"  }} - {{ isset($mailData['repayment_bank_account_number3'])?$mailData['repayment_bank_account_number3']:"-"  }} - {{ isset($mailData['repayment_bank_account_number4'])?$mailData['repayment_bank_account_number4']:"-"  }}    |
+| Account Name      | {{ isset($mailData['repayment_bank_account_name'])?$mailData['repayment_bank_account_name']:"-"  }} | {{ isset($mailData['repayment_bank_authorization'])?$mailData['repayment_bank_authorization']:"-"  }}      |
+| Name of the Authorizer      | {{ isset($mailData['repayment_authorizer_name'])?$mailData['repayment_authorizer_name']:"-"  }} | {{ isset($mailData['repayment_authorization'])?$mailData['repayment_authorization']:"-"  }}      |
+| Payment Start Date      | {{ isset($mailData['repayment_start_date'])?$mailData['repayment_start_date']:"-"  }} |
 | Prefferred Frequency      | {{ isset($mailData['repayment_frequency'])?$mailData['repayment_frequency']:"-" }} |
-| Next Income Payday      | {{ isset($mailData['pay_day'])?$mailData['pay_day']:"-"  }} |
-| Secured signing.      | {{ isset($mailData['secure_sign_agreed'])?"Secure Signing No":"Secure Signing Yes"  }} |
 @endcomponent
 
 @component('mail::table')
 | Privacy Waiver       |             |
 | ------------- |:-----------------:|
-| I confirm that I have read and understood the document before proceeding.       | {{ isset($mailData['privacy_act_agreement'])?$mailData['privacy_act_agreement']:"-"  }}      |
+| I confirm that I have read and understood the document before proceeding.       | 
 @endcomponent
 
 Thanks,<br>

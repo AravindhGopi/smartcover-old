@@ -482,7 +482,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-xs-12" for="jointapp_applicant_date_of_birth">Date Of Issue<sup>*</sup></label>
+                                    <label class="control-label col-xs-12" for="passport_issue_date">Date Of Issue<sup>*</sup></label>
                                     
                                     <div class="col-md-4">
                                         <select class="form-control col-md-4" name="passport_issue_date" id="passport_issue_date">
@@ -799,6 +799,8 @@
                                 <div class="col-sm-6 col-xs-12">
                                     <label class="control-label" for="applicant_email">Email<sup>*</sup></label>
                                     <input type="text" class="form-control" name="applicant_email" id="applicant_email" />
+                                    <div style="font-size:12px; font-weight:normal;" class="text-justify">Confirmation letter will be sent to you via email after your submit your online authority signup and your loan has been opened and funds disbursed</div>
+
                                 </div>
                                 <div class="col-sm-6 col-xs-12">
                                     <label class="control-label" for="applicant_mobile">Mobile<sup>*</sup></label>
@@ -1307,7 +1309,7 @@
                                     
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-xs-12" for="jointapp_passport_expiry_year">Expiry Date<sup>*</sup></label>
+                                    <label class="control-label col-xs-12" for="">Expiry Date<sup>*</sup></label>
                                     <div class="col-md-4">
                                         <select class="form-control col-md-4" name="jointapp_passport_expiry_date" id="jointapp_passport_expiry_date">
                                             <option value="">-Date-</option>
@@ -1590,6 +1592,7 @@
                                 <div class="col-sm-6 col-xs-12">
                                     <label class="control-label" for="applicant_email">Email<sup>*</sup></label>
                                     <input type="text" class="form-control" name="jointapp_applicant_email" id="jointapp_applicant_email" />
+                                    <div style="font-size:12px; font-weight:normal;" class="text-justify">Confirmation letter will be sent to you via email after your submit your online authority signup and your loan has been opened and funds disbursed</div>
                                 </div>
                                 <div class="col-sm-6 col-xs-12">
                                     <label class="control-label" for="applicant_mobile">Mobile<sup>*</sup></label>
@@ -1908,7 +1911,7 @@
                                     <label class="control-label" for="repayment_bank_account_name">Account Name<sup>*</sup></label>
                                     <input type="text" class="form-control" name="repayment_bank_account_name" id="repayment_bank_account_name" />
                                     <div class="checkbox">
-                                        <label><input type="checkbox" name="repayment_bank_authorization" value="Privacy Check" id="repayment_bank_authorization">
+                                        <label><input type="checkbox" name="repayment_bank_authorization" value="Verified" id="repayment_bank_authorization">
                                             I am authorized to operate this bank account independently.</label>
                                     </div>
                                 </div>
@@ -1944,7 +1947,7 @@
                             </div>
                             <br>
                             <div class="checkbox">
-                                <label class="text-justify"><input type="checkbox" name="repayment_authorization" value="Privacy Check" id="repayment_authorization">
+                                <label class="text-justify"><input type="checkbox" name="repayment_authorization" value="Verified" id="repayment_authorization">
                                     I agree to the <a href="#" data-toggle="modal" data-target="#terms_and_conditions_modal">direct debit terms and conditions</a>. I authorize Smartcover Finance to process direct debits to my nominated account, and
                                     I authorize my bank to accept these payments. I’m aware that I can contact Smartcover Finance on 0508 738 765 to change/cancel my payment method at any time. *</label>
                             </div>

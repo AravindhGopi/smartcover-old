@@ -12,10 +12,11 @@
 */
 use Illuminate\Support\Facades\App;
 Route::get('/clear-cache', function() {
-    $exitCode = Artisan::call('cache:clear');
-    $viewCache = Artisan::call('view:clear');
-    $routeCache = Artisan::call('route:clear');
-    return $exitCode;
+    Artisan::call('cache:clear');
+    Artisan::call('config:cache');
+    Artisan::call('view:clear');
+    Artisan::call('route:clear');
+    // return $exitCode;
 });
 Route::get('/test', "HomeController@test");
 Route::get('/apply-now', "HomeController@index");

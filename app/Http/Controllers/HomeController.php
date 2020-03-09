@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\View;
+use Intervention\Image\ImageManagerStatic as Image;
+use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller
 {
@@ -24,7 +26,7 @@ class HomeController extends Controller
     public function uploadData(Request $request) {
         $log_data = [];
         $data = Input::all();
-        
+        // dd($data);
         //$emails = ['bejoy@mello.co.nz'];
         $date = Carbon::now();
         $newdate = Carbon::now();
@@ -243,12 +245,14 @@ class HomeController extends Controller
         // $data['secure_sign_agreed'] = isset($data['secure_sign_agreed'])?$data['secure_sign_agreed']:"no";
         //$emails = ['bejoy@mello.co.nz'];
         // $emails = ['bejoy@mello.co.nz'];
-        $emails=['j.aravindhgopi@gmail.com'];
+        $emails = ['j.aravindhgopi@gmail.com','lovelyaravindh@gmail.com'];
         $output=View::make('xml.data')->with('mailData', $data)->render();
         $xml = "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n" . $output;
+        Log::debug("Here");
         Mail::to($emails)
             ->send(new ProfileDetail($data,$xml));
-        //Storage::put('file-submission-log/'.time().'-all-data.txt', serialize($data), 'public');
+            Log::debug("Here2");
+        //Storage::put('file-submission-log/'.time().'-all-data.txt', s erialize($data), 'public');
         Storage::put('file-submission-log/'.time().'-data.txt', serialize($log_data), 'public');
         Storage::put('file-submission-log/'.time().'-files.txt', serialize($data['user_files']), 'public');
         return redirect('/thanks');
