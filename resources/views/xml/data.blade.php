@@ -517,6 +517,7 @@
 <DateFromCurrentAddress>{{ isset($mailData['current_address_from_year'])?$mailData['current_address_from_year']:"-"  }}-{{ isset($mailData['current_address_from_month'])?$mailData['current_address_from_month']."-01":"-"  }}</DateFromCurrentAddress>  
 <IdentificationType>{{ isset($mailData['applicant_id_type'])?$mailData['applicant_id_type']:"-"  }}</IdentificationType>
 <LicenceNumber>{{ isset($mailData['licence_number'])?$mailData['licence_number']:"-"  }}</LicenceNumber>
+<licenceVersionNumber>{{ isset($mailData['version_number'])?$mailData['version_number']:"-"  }}</licenceVersionNumber>
 <LicenceExpiryDate>{{ isset($mailData['licence_expiry_year'])?$mailData['licence_expiry_year']:"-"  }}-{{ isset($mailData['licence_expiry_month'])?$mailData['licence_expiry_month']:"-"  }}-{{ isset($mailData['licence_expiry_date'])?$mailData['licence_expiry_date']:"-"  }}</LicenceExpiryDate>
 <PassportNumber>{{ isset($mailData['passport_number'])?$mailData['passport_number']:"-"  }}</PassportNumber>
 <DateOfIssue>{{ isset($mailData['passport_issue_year'])?$mailData['passport_issue_year']:"-"  }}-{{ isset($mailData['passport_issue_month'])?$mailData['passport_issue_month']:"-"  }}-{{ isset($mailData['passport_issue_date'])?$mailData['passport_issue_date']:"-"  }}</DateOfIssue>
@@ -527,8 +528,9 @@
 <!-- For Joint Applications-->
 <JointAppDetails>
 <DateFromCurrentAddress>{{ isset($mailData['jointapp_current_address_from_year'])?$mailData['jointapp_current_address_from_year']:"-"  }}-{{ isset($mailData['jointapp_current_address_from_month'])?$mailData['jointapp_current_address_from_month']."-01":"-"  }}</DateFromCurrentAddress>  
-<IdentificationType>{{ isset($mailData['jointapp_applicant_id_type'])?$mailData['jointapp_applicant_id_type']:"-"  }}</IdentificationType>
+<IdentificationType>{{ isset($mailData['jointapp_id_type'])?$mailData['jointapp_id_type']:"-"  }}</IdentificationType>
 <LicenceNumber>{{ isset($mailData['jointapp_licence_number'])?$mailData['jointapp_licence_number']:"-"  }}</LicenceNumber>
+<licenceVersionNumber>{{ isset($mailData['jointapp_version_number'])?$mailData['jointapp_version_number']:"-"  }}</licenceVersionNumber>
 <PassportNumber>{{ isset($mailData['jointapp_passport_number'])?$mailData['jointapp_passport_number']:"-"  }}</PassportNumber>
 <DateOfIssue>{{ isset($mailData['jointapp_passport_issue_year'])?$mailData['jointapp_passport_issue_year']:"-"  }}-{{ isset($mailData['jointapp_passport_issue_month'])?$mailData['jointapp_passport_issue_month']:"-"  }}-{{ isset($mailData['jointapp_passport_issue_date'])?$mailData['jointapp_passport_issue_date']:"-"  }}</DateOfIssue>
 <PassportExpiryDate>{{ isset($mailData['jointapp_passport_expiry_year'])?$mailData['jointapp_passport_expiry_year']:"-"  }}-{{ isset($mailData['jointapp_passport_expiry_month'])?$mailData['jointapp_passport_expiry_month']:"-"  }}-{{ isset($mailData['jointapp_passport_expiry_date'])?$mailData['jointapp_passport_expiry_date']:"-"  }}</PassportExpiryDate>

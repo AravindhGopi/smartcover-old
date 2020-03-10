@@ -29,7 +29,7 @@
 | Type of identification          | {{ isset($mailData['applicant_id_type'])?$mailData['applicant_id_type']:"-"  }} |
 | Maritial Status   | {{ isset($mailData['applicant_marital_status'])?$mailData['applicant_marital_status']:"-"  }} |
 | Number of dependents | {{ isset($mailData['applicant_no_of_dependents'])?$mailData['applicant_no_of_dependents']:"-"  }} |
-@if(isset($mailData['applicant_id_type']) == "NZ Drivers License")
+@if($mailData['applicant_id_type'] == "NZ Drivers License")
 | Licence Number | {{ isset($mailData['licence_number'])?$mailData['licence_number']:"-"  }} |
 | Version Number | {{ isset($mailData['version_number'])?$mailData['version_number']:"-"  }} |
 | Licence Expiry Date | {{ isset($mailData['licence_expiry_date'])?$mailData['licence_expiry_date']:"-"  }} / {{ isset($mailData['licence_expiry_month'])?$mailData['licence_expiry_month']:"-"  }} / {{ isset($mailData['licence_expiry_year'])?$mailData['licence_expiry_year']:"-"  }} |
@@ -106,11 +106,11 @@
 | Suburb      | {{ isset($mailData['jointapp_current_suburb'])?$mailData['jointapp_current_suburb']:"-"  }} |
 | Town/city      | {{ isset($mailData['jointapp_current_city'])?$mailData['jointapp_current_city']:"-"  }} |
 | Postcode      | {{ isset($mailData['jointapp_current_postcode'])?$mailData['jointapp_current_postcode']:"-"  }} |
-| Years at this address      | {{ isset($mailData['jointapp_years_at_current_from'])?$mailData['jointapp_years_at_current_from']:"-/-/-"  }} - {{ isset($mailData['jointapp_years_at_current_to'])?$mailData['jointapp_years_at_current_to']:"-/-/-"  }} |
-| Type of identification      | {{ isset($mailData['jointapp__id_type'])?$mailData['jointapp__id_type']:"-"  }} |
+| Time at this address      | {{ isset($mailData['jointapp_years_at_current_from'])?$mailData['jointapp_years_at_current_from']:"-/-/-"  }} - {{ isset($mailData['jointapp_years_at_current_to'])?$mailData['jointapp_years_at_current_to']:"-/-/-"  }} |
+| Type of identification      | {{ isset($mailData['jointapp_id_type'])?$mailData['jointapp_id_type']:"-"  }} |
 | Maritial Status      | {{ isset($mailData['jointapp_marital_status'])?$mailData['jointapp_marital_status']:"-"  }} |
 | Number of dependents      | {{ isset($mailData['jointapp_no_of_dependents'])?$mailData['jointapp_no_of_dependents']:"-"  }} |
-@if(isset($mailData['jointapp_id_type']) == "NZ Drivers License")
+@if($mailData['jointapp_id_type'] == "NZ Drivers License")
 | Licence Number | {{ isset($mailData['jointapp_licence_number'])?$mailData['jointapp_licence_number']:"-"  }} |
 | Version Number | {{ isset($mailData['jointapp_version_number'])?$mailData['jointapp_version_number']:"-"  }} |
 | Licence Expiry Date | {{ isset($mailData['jointapp_licence_expiry_date'])?$mailData['jointapp_licence_expiry_date']:"-"  }} / {{ isset($mailData['jointapp_licence_expiry_month'])?$mailData['jointapp_licence_expiry_month']:"-"  }} / {{ isset($mailData['jointapp_licence_expiry_year'])?$mailData['jointapp_licence_expiry_year']:"-"  }} |
@@ -170,8 +170,10 @@
 | Loan amount       | {{ isset($mailData['loan_amount'])?$mailData['loan_amount']:"-"  }}      |
 | Loan Reason      | {{ isset($mailData['loan_reason'])?$mailData['loan_reason']:"-"  }} |
 | Name of Store (if any)      | {{ isset($mailData['loan_agent'])?$mailData['loan_agent']:"-"  }} |
+| Payment Type     | {{ isset($mailData['payment_type'])?$mailData['payment_type']:"-"  }} |
 @endcomponent
 
+@if($mailData['payment_type'] == "Direct Debit")
 @component('mail::table')
 | Loan Repayment Details       |              |
 | ------------- |:-----------------:|
@@ -181,6 +183,7 @@
 | Payment Start Date      | {{ isset($mailData['repayment_start_date'])?$mailData['repayment_start_date']:"-"  }} |
 | Prefferred Frequency      | {{ isset($mailData['repayment_frequency'])?$mailData['repayment_frequency']:"-" }} |
 @endcomponent
+@endif
 
 @component('mail::table')
 | Privacy Waiver       |             |

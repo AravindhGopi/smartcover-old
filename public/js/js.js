@@ -644,16 +644,16 @@
         /**************************************************/
         //$(".hideVehicle").hide();
         $("body").on("change", "#residential_status", function () {
-            if ($(this).val() == "NZ Citizen") {
-                $("#visaHolder").hide();
-            } else {
+            if ($(this).val() == "Work Visa") {
                 $("#visaHolder").show();
+            } else {
+                $("#visaHolder").hide();
             }
         }).on("change", "#jointapp_residential_status", function () {
-            if ($(this).val() == "NZ Citizen") {
-                $("#jointapp_visaHolder").hide();
-            } else {
+            if ($(this).val() == "Work Visa") {
                 $("#jointapp_visaHolder").show();
+            } else {
+                $("#jointapp_visaHolder").hide();
             }
         })/*.on("click", "input[type='radio'][name='is_vehicle_security']", function () {
          if ($(this).val() == "no") {
