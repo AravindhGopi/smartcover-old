@@ -25,7 +25,7 @@
 | Suburb             | {{ isset($mailData['current_suburb'])?$mailData['current_suburb']:"-"  }} |
 | Town/city               | {{ isset($mailData['current_city'])?$mailData['current_city']:"-"  }} |
 | Postcode           | {{ isset($mailData['current_postcode'])?$mailData['current_postcode']:"-"  }} |
-| Time at this address      | {{ isset($mailData['current_address_from_month'])?$mailData['current_address_from_month']:"-/-"  }} / {{ isset($mailData['current_address_from_year'])?$mailData['current_address_from_year']:"-/-"  }} |
+| Time at this address      | {{ isset($mailData['current_address_from_month'])?"01/".$mailData['current_address_from_month']:"-/-"  }} / {{ isset($mailData['current_address_from_year'])?$mailData['current_address_from_year']:"-"  }} |
 | Type of identification          | {{ isset($mailData['applicant_id_type'])?$mailData['applicant_id_type']:"-"  }} |
 | Maritial Status   | {{ isset($mailData['applicant_marital_status'])?$mailData['applicant_marital_status']:"-"  }} |
 | Number of dependents | {{ isset($mailData['applicant_no_of_dependents'])?$mailData['applicant_no_of_dependents']:"-"  }} |

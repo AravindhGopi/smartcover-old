@@ -274,6 +274,15 @@
                         }
                     }
                 },
+                "licence_expiry_date":{
+                    required: function(element){
+                        if($('#applicant_id_type').val() == "NZ Drivers License"){
+                            return true;
+                        }else{
+                            return false;
+                        }
+                    }
+                },
                 "licence_expiry_year":{
                     required: function(element){
                         if($('#applicant_id_type').val() == "NZ Drivers License"){
@@ -294,7 +303,7 @@
                 },
                 "passport_number":{
                     required: function(element){
-                        if(($('#applicant_id_type').val() == "NZ Passport") || ($('#applicant_id_type').val() == "NZ Passport")){
+                        if(($('#applicant_id_type').val() != "NZ Drivers License")){
                             return true;
                         }else{
                             return false;
@@ -303,7 +312,7 @@
                 },
                 "passport_issue_year":{
                     required: function(element){
-                        if(($('#applicant_id_type').val() == "NZ Passport") || ($('#applicant_id_type').val() == "NZ Passport")){
+                        if(($('#applicant_id_type').val() != "NZ Drivers License")){
                             return true;
                         }else{
                             return false;
@@ -312,7 +321,7 @@
                 },
                 "passport_issue_month":{
                     required: function(element){
-                        if(($('#applicant_id_type').val() == "NZ Passport") || ($('#applicant_id_type').val() == "NZ Passport")){
+                        if(($('#applicant_id_type').val() != "NZ Drivers License")){
                             return true;
                         }else{
                             return false;
@@ -321,7 +330,7 @@
                 },
                 "passport_issue_date":{
                     required: function(element){
-                        if(($('#applicant_id_type').val() == "NZ Passport") || ($('#applicant_id_type').val() == "NZ Passport")){
+                        if(($('#applicant_id_type').val() != "NZ Drivers License")){
                             return true;
                         }else{
                             return false;
@@ -330,7 +339,7 @@
                 },
                 "passport_expiry_year":{
                     required: function(element){
-                        if(($('#applicant_id_type').val() == "NZ Passport") || ($('#applicant_id_type').val() == "NZ Passport")){
+                        if(($('#applicant_id_type').val() != "NZ Drivers License")){
                             return true;
                         }else{
                             return false;
@@ -339,7 +348,7 @@
                 },
                 "passport_expiry_month":{
                     required: function(element){
-                        if(($('#applicant_id_type').val() == "NZ Passport") || ($('#applicant_id_type').val() == "NZ Passport")){
+                        if(($('#applicant_id_type').val() != "NZ Drivers License")){
                             return true;
                         }else{
                             return false;
@@ -348,7 +357,7 @@
                 },
                 "passport_expiry_date":{
                     required: function(element){
-                        if(($('#applicant_id_type').val() == "NZ Passport") || ($('#applicant_id_type').val() == "NZ Passport")){
+                        if(($('#applicant_id_type').val() != "NZ Drivers License")){
                             return true;
                         }else{
                             return false;
@@ -394,6 +403,15 @@
                         }
                     }
                 },
+                "jointapp_licence_expiry_date":{
+                    required: function(element){
+                        if($('#jointapp_id_type').val() == "NZ Drivers License"){
+                            return true;
+                        }else{
+                            return false;
+                        }
+                    }
+                },
                 "jointapp_licence_expiry_year":{
                     required: function(element){
                         if($('#jointapp_id_type').val() == "NZ Drivers License"){
@@ -414,7 +432,7 @@
                 },
                 "jointapp_passport_number":{
                     required: function(element){
-                        if(($('#jointapp_id_type').val() == "NZ Passport") || ($('#jointapp_id_type').val() == "NZ Passport")){
+                        if(($('#jointapp_id_type').val() != "NZ Drivers License")){
                             return true;
                         }else{
                             return false;
@@ -423,7 +441,7 @@
                 },
                 "jointapp_passport_issue_year":{
                     required: function(element){
-                        if(($('#jointapp_id_type').val() == "NZ Passport") || ($('#jointapp_id_type').val() == "NZ Passport")){
+                        if(($('#jointapp_id_type').val() != "NZ Drivers License")){
                             return true;
                         }else{
                             return false;
@@ -432,7 +450,7 @@
                 },
                 "jointapp_passport_issue_month":{
                     required: function(element){
-                        if(($('#jointapp_id_type').val() == "NZ Passport") || ($('#jointapp_id_type').val() == "NZ Passport")){
+                        if(($('#jointapp_id_type').val() != "NZ Drivers License")){
                             return true;
                         }else{
                             return false;
@@ -441,7 +459,7 @@
                 },
                 "jointapp_passport_issue_date":{
                     required: function(element){
-                        if(($('#jointapp_id_type').val() == "NZ Passport") || ($('#jointapp_id_type').val() == "NZ Passport")){
+                        if(($('#jointapp_id_type').val() != "NZ Drivers License")){
                             return true;
                         }else{
                             return false;
@@ -450,7 +468,7 @@
                 },
                 "jointapp_passport_expiry_year":{
                     required: function(element){
-                        if(($('#jointapp_id_type').val() == "NZ Passport") || ($('#jointapp_id_type').val() == "NZ Passport")){
+                        if(($('#jointapp_id_type').val() != "NZ Drivers License")){
                             return true;
                         }else{
                             return false;
@@ -459,7 +477,7 @@
                 },
                 "jointapp_passport_expiry_month":{
                     required: function(element){
-                        if(($('#jointapp_id_type').val() == "NZ Passport") || ($('#jointapp_id_type').val() == "NZ Passport")){
+                        if(($('#jointapp_id_type').val() != "NZ Drivers License")){
                             return true;
                         }else{
                             return false;
@@ -468,7 +486,7 @@
                 },
                 "jointapp_passport_expiry_date":{
                     required: function(element){
-                        if(($('#jointapp_id_type').val() == "NZ Passport") || ($('#jointapp_id_type').val() == "NZ Passport")){
+                        if(($('#jointapp_id_type').val() != "NZ Drivers License")){
                             return true;
                         }else{
                             return false;
@@ -484,6 +502,7 @@
                         }
                     }
                 },
+                "payment_type":{required:true}
             },
             messages: {
 
@@ -766,6 +785,16 @@
                     parent_fieldset.fadeOut(400, function () {
                         $("#jointAppContactInformationTab").fadeIn();
                     });
+                }else if ($(this).data('id') == "tab12next") {
+                    if ($("[name='payment_type']:checked").val() == "Direct Debit") {
+                        parent_fieldset.fadeOut(400, function () {
+                            $(this).next().fadeIn();
+                        });
+                    }else{
+                        parent_fieldset.fadeOut(400, function () {
+                            $("#privacyWaiverTab").fadeIn();
+                        });
+                    }
                 } else {
                     parent_fieldset.fadeOut(400, function () {
                         $(this).next().fadeIn();
@@ -839,6 +868,16 @@
                             $('#jointAppPassportUploadTab').fadeIn();
                         });
                     } */
+                }
+            }else if ($(this).data('id') == "tab14previous") {
+                if ($("[name='payment_type']:checked").val() == "Direct Debit") {
+                    $(this).parents('fieldset').fadeOut(400, function () {
+                        $(this).prev().fadeIn();
+                    });
+                }else{
+                    $(this).parents('fieldset').fadeOut(400, function () {
+                        $("#loanTab").fadeIn();
+                    });
                 }
             } else {
                 $(this).parents('fieldset').fadeOut(400, function () {

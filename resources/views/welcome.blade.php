@@ -341,7 +341,7 @@
                                 <div class="col-md-4">
                                     <select class="form-control col-md-4" name="applicant_birth_year" id="applicant_birth_year">
                                         <option value="">-Year-</option>
-                                        @for ($i = 1930; $i <= date('Y'); $i++) <option value="{{ $i }}">{{ $i }}</option>
+                                        @for ($i = date('Y'); $i >= 1930; $i--) <option value="{{ $i }}">{{ $i }}</option>
                                             @endfor
                                     </select>
                                 </div>
@@ -381,7 +381,7 @@
                             </div>
                         </div> -->
                             <div class="form-group">
-                                <label class="col-xs-12 control-label" for="years_at_current">Time at this address (Date From)<sup>*</sup></label>
+                                <label class="col-xs-12 control-label" for="current_address_from">Time at this address (Date From)<sup>*</sup></label>
                                 <div class="col-md-4">
                                     <select class="form-control col-md-4" name="current_address_from_month" id="current_address_from_month">
                                         <option value="">-Month-</option>
@@ -393,7 +393,7 @@
                                 <div class="col-md-4">
                                     <select class="form-control col-md-4" name="current_address_from_year" id="current_address_from_year">
                                         <option value="">-Year-</option>
-                                        @for ($i = 1930; $i <= date('Y'); $i++) <option value="{{ $i }}">{{ $i }}</option>
+                                        @for ($i = date('Y'); $i >= 1930; $i--) <option value="{{ $i }}">{{ $i }}</option>
                                             @endfor
                                     </select>
                                 </div>
@@ -503,7 +503,7 @@
                                     <div class="col-md-4">
                                         <select class="form-control col-md-4" name="passport_issue_year" id="passport_issue_year">
                                             <option value="">-Year-</option>
-                                            @for ($i = 1930; $i <= date('Y'); $i++) <option value="{{ $i }}">{{ $i }}</option>
+                                            @for ($i = date('Y'); $i >= 1930; $i--) <option value="{{ $i }}">{{ $i }}</option>
                                                 @endfor
                                         </select>
                                     </div>
@@ -1141,7 +1141,7 @@
                                 <div class="col-md-4">
                                     <select class="form-control col-md-4" name="jointapp_applicant_birth_year" id="jointapp_applicant_birth_year">
                                         <option value="">-Year-</option>
-                                        @for ($i = 1930; $i <= date('Y'); $i++) <option value="{{ $i }}">{{ $i }}</option>
+                                        @for ($i = date('Y'); $i >= 1930; $i--) <option value="{{ $i }}">{{ $i }}</option>
                                             @endfor
                                     </select>
                                 </div>
@@ -1193,7 +1193,7 @@
                                 <div class="col-md-4">
                                     <select class="form-control col-md-4" name="jointapp_current_address_from_year" id="jointapp_current_address_from_year">
                                         <option value="">-Year-</option>
-                                        @for ($i = 1930; $i <= date('Y'); $i++) <option value="{{ $i }}">{{ $i }}</option>
+                                        @for ($i = date('Y'); $i >= 1930; $i--) <option value="{{ $i }}">{{ $i }}</option>
                                             @endfor
                                     </select>
                                 </div>
@@ -1302,7 +1302,7 @@
                                     <div class="col-md-4">
                                         <select class="form-control col-md-4" name="jointapp_passport_issue_year" id="jointapp_passport_issue_year">
                                             <option value="">-Year-</option>
-                                            @for ($i = 1930; $i <= date('Y'); $i++) <option value="{{ $i }}">{{ $i }}</option>
+                                            @for ($i = date('Y'); $i >= 1930; $i--) <option value="{{ $i }}">{{ $i }}</option>
                                                 @endfor
                                         </select>
                                     </div>
@@ -1867,7 +1867,25 @@
                                     <input type="text" style="width: 200px;" class="form-control input_date" name="pay_day" id="pay_day" placeholder="DD / MM / YY" />
                                 </div>
                             </div> -->
-
+                            <div class="form-group">
+                                <label class="col-xs-12 control-label" for="payment_type">Payment Type<sup>*</sup>
+                                <br>
+                                <div style="font-size:12px; font-weight:normal;" class="text-justify">SmartCover Finance requires that customers repay their loan by either Automatic payment or Direct debit. Please select one of the options below:</div>
+                                </label>
+                                
+                                <div class="col-sm-12 col-xs-12 col-op radio">
+                                    <label><input type="radio" name="payment_type" id="payment_type_direct_debit" value="Direct Debit" /> Direct Debit
+                                        <span class="optmark"></span></label>
+                                </div>
+                                <div class="col-sm-12 col-xs-12 col-op radio">
+                                    <label><input type="radio" name="payment_type" id="payment_type_automatic_debit" value="Automatic Payment" /> Automatic Payment
+                                        <span class="optmark"></span></label>
+                                </div>
+                                <div class="col-sm-12 col-xs-12 col-op radio">
+                                    <label><input type="radio" name="payment_type" id="payment_type_standard_direct_debit" value="Request a standard Direct Debit Form" /> Request a standard Direct Debit Form
+                                        <span class="optmark"></span></label>
+                                </div>
+                            </div>
                             <div class="info_sec">
                                 <div class="info_block">
                                     <p>Smartcover Finance can send you a digital copy of your loan agreement to read and sign via Secured signing. To Opt out of this service please tick below.</p>
@@ -1942,7 +1960,7 @@
 
                             <div class="info_sec">
                                 <div class="info_block">
-                                    <p class="text-justify">Please note: The start date you choose may alter depending on when the contract is signed and loan process is complete. A full telephone disclosure will take place before the contract is finalized to discuss the payment schedule and direct debit confirmation letter will be sent to the email address supplied once the loan has been opened.</p>
+                                    <p class="text-justify"><b>Please note:</b> The start date you choose may alter depending on when the contract is signed and loan process is complete. A full telephone disclosure will take place before the contract is finalized to discuss the payment schedule and direct debit confirmation letter will be sent to the email address supplied once the loan has been opened.</p>
                                 </div>
                             </div>
                             <br>
@@ -1957,18 +1975,18 @@
                                     <div style="font-size:12px; font-weight:normal;" class="text-justify"> *Direct Debit Disputes: The Direct Debit Terms and Conditions set out the responsibilities of each party and explain the process for any disputed transactions. If you have any questions about your payments, or wish to change or cancel these direct debit instructions, please contact us on 0508 738 765</div>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <a href="javascript:void(0)" onclick="demoFromHTML()" class="pull-left">
                                     Click Here to Download the Form</a>
-                            </div>
+                            </div> -->
                             <div class="nav_sec">
                                 <a href="javascript:void(0)" data-id="tab13previous" class="pull-left btn-previous main_button jointShowPrevious">
                                     Previous</a>
                                 <a href="javascript:void(0)" data-id="tab13next" class="pull-right btn-next main_button">Next</a>
                             </div>
                         </fieldset>
-                        <fieldset data-step="14">
-                            <h3 class="section_head">Privacy Waiver<span class="nav_blk"><a href="javascript:void(0)" class="prv_Tbtn btn-previous"></a></span>
+                        <fieldset data-step="14" id="privacyWaiverTab">
+                            <h3 class="section_head">Privacy Waiver<span class="nav_blk"><a href="javascript:void(0)" data-id="tab14previous" class="prv_Tbtn btn-previous"></a></span>
                             </h3>
                             <div class="alert alert-danger" id="alertHolder" style="display:none;">
                                 <p>In order to proceed please accept the Privacy Waiver.</p>
@@ -2021,7 +2039,7 @@
                             </div>
 
                             <div class="nav_sec">
-                                <a href="javascript:void(0)" class="pull-left btn-previous main_button"> Previous</a>
+                                <a href="javascript:void(0)"data-id="tab14previous" class="pull-left btn-previous main_button"> Previous</a>
                                 <!--<button type="submit" class="pull-right" name="online_application_submit" id="online_application_submit">Submit</button>-->
                                 <input type="submit" value="Complete" class="pull-right" name="online_application_submit" id="online_application_submit">
                             </div>
@@ -2181,8 +2199,8 @@
     <script src="{{ asset('/js/moment.js') }}"></script>
     <script src="{{ asset('/js/bootstrap-datetimepicker.js') }}"></script>
     <script src="{{ asset('/js/ion.rangeSlider.min.js') }}"></script>
-    <script src="{{ asset('/js/js.js?v=1.6') }}"></script>
-    <script src="{{ asset('/js/newjs.js?v=1.6') }}"></script>
+    <script src="{{ asset('/js/js.js?v=1.7') }}"></script>
+    <script src="{{ asset('/js/newjs.js?v=1.7') }}"></script>
 
 </body>
 

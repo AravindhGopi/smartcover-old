@@ -25,6 +25,9 @@ Route::get('/', function(){
 });
 Route::get('/thanks', "HomeController@thanks");
 Route::post('/profile-form', "HomeController@uploadData");
+Route::get('/xmltest', function(){
+    return view('xml.data');
+});
 Route::get('/mailable', function () {
     $x = [1,2,3];
 

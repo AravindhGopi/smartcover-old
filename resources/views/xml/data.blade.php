@@ -513,7 +513,40 @@
 </SecurityStmt>
 @endif
 
+<newChanges>
+<DateFromCurrentAddress>{{ isset($mailData['current_address_from_year'])?$mailData['current_address_from_year']:"-"  }}-{{ isset($mailData['current_address_from_month'])?$mailData['current_address_from_month']."-01":"-"  }}</DateFromCurrentAddress>  
+<IdentificationType>{{ isset($mailData['applicant_id_type'])?$mailData['applicant_id_type']:"-"  }}</IdentificationType>
+<LicenceNumber>{{ isset($mailData['licence_number'])?$mailData['licence_number']:"-"  }}</LicenceNumber>
+<LicenceExpiryDate>{{ isset($mailData['licence_expiry_year'])?$mailData['licence_expiry_year']:"-"  }}-{{ isset($mailData['licence_expiry_month'])?$mailData['licence_expiry_month']:"-"  }}-{{ isset($mailData['licence_expiry_date'])?$mailData['licence_expiry_date']:"-"  }}</LicenceExpiryDate>
+<PassportNumber>{{ isset($mailData['passport_number'])?$mailData['passport_number']:"-"  }}</PassportNumber>
+<DateOfIssue>{{ isset($mailData['passport_issue_year'])?$mailData['passport_issue_year']:"-"  }}-{{ isset($mailData['passport_issue_month'])?$mailData['passport_issue_month']:"-"  }}-{{ isset($mailData['passport_issue_date'])?$mailData['passport_issue_date']:"-"  }}</DateOfIssue>
+<PassportExpiryDate>{{ isset($mailData['passport_expiry_year'])?$mailData['passport_expiry_year']:"-"  }}-{{ isset($mailData['passport_expiry_month'])?$mailData['passport_expiry_month']:"-"  }}-{{ isset($mailData['passport_expiry_date'])?$mailData['passport_expiry_date']:"-"  }}</PassportExpiryDate>
+<AccomodationType>{{ isset($mailData['accomodation_type'])?$mailData['accomodation_type']:"-"  }}</AccomodationType>
+<ExpenseAmount>{{ isset($mailData['expense_amount'])?$mailData['expense_amount']:"-"  }}</ExpenseAmount>
+<ExpenseFrequency>{{ isset($mailData['expense_frequency'])?$mailData['expense_frequency']:"-"  }}</ExpenseFrequency>
+<!-- For Joint Applications-->
+<JointAppDetails>
+<DateFromCurrentAddress>{{ isset($mailData['jointapp_current_address_from_year'])?$mailData['jointapp_current_address_from_year']:"-"  }}-{{ isset($mailData['jointapp_current_address_from_month'])?$mailData['jointapp_current_address_from_month']."-01":"-"  }}</DateFromCurrentAddress>  
+<IdentificationType>{{ isset($mailData['jointapp_applicant_id_type'])?$mailData['jointapp_applicant_id_type']:"-"  }}</IdentificationType>
+<LicenceNumber>{{ isset($mailData['jointapp_licence_number'])?$mailData['jointapp_licence_number']:"-"  }}</LicenceNumber>
+<PassportNumber>{{ isset($mailData['jointapp_passport_number'])?$mailData['jointapp_passport_number']:"-"  }}</PassportNumber>
+<DateOfIssue>{{ isset($mailData['jointapp_passport_issue_year'])?$mailData['jointapp_passport_issue_year']:"-"  }}-{{ isset($mailData['jointapp_passport_issue_month'])?$mailData['jointapp_passport_issue_month']:"-"  }}-{{ isset($mailData['jointapp_passport_issue_date'])?$mailData['jointapp_passport_issue_date']:"-"  }}</DateOfIssue>
+<PassportExpiryDate>{{ isset($mailData['jointapp_passport_expiry_year'])?$mailData['jointapp_passport_expiry_year']:"-"  }}-{{ isset($mailData['jointapp_passport_expiry_month'])?$mailData['jointapp_passport_expiry_month']:"-"  }}-{{ isset($mailData['jointapp_passport_expiry_date'])?$mailData['jointapp_passport_expiry_date']:"-"  }}</PassportExpiryDate>
+<AccomodationType>{{ isset($mailData['jointapp_accomodation_type'])?$mailData['jointapp_accomodation_type']:"-"  }}</AccomodationType>
+<ExpenseAmount>{{ isset($mailData['jointapp_expense_amount'])?$mailData['jointapp_expense_amount']:"-"  }}</ExpenseAmount>
+<ExpenseFrequency>{{ isset($mailData['jointapp_expense_frequency'])?$mailData['jointapp_expense_frequency']:"-"  }}</ExpenseFrequency>
+</JointAppDetails>
 
+<PaymentType>{{ isset($mailData['payment_type'])?$mailData['payment_type']:"-"  }}</PaymentType>
+<LoanRepayments>
+<BankAccountNumber>{{ isset($mailData['repayment_bank_account_number1'])?$mailData['repayment_bank_account_number1']:"-"  }}-{{ isset($mailData['repayment_bank_account_number2'])?$mailData['repayment_bank_account_number2']:"-"  }}-{{ isset($mailData['repayment_bank_account_number3'])?$mailData['repayment_bank_account_number3']:"-"  }}-{{ isset($mailData['repayment_bank_account_number4'])?$mailData['repayment_bank_account_number4']:"-"  }}</BankAccountNumber>
+<AccountName>{{ isset($mailData['repayment_bank_account_name'])?$mailData['repayment_bank_account_name']:"-"  }}</AccountName>
+<AccountNameCheck>{{ isset($mailData['repayment_bank_authorization'])?$mailData['repayment_bank_authorization']:"-"  }}</AccountNameCheck>
+<NameOfTheAuthorizer>{{ isset($mailData['repayment_authorizer_name'])?$mailData['repayment_authorizer_name']:"-"  }}</NameOfTheAuthorizer>
+<PaymentStartDate>{{ isset($mailData['payment_start_date_xml'])?$mailData['payment_start_date_xml']:"-"  }}</PaymentStartDate>
+<PaymentFrequency>{{ isset($mailData['repayment_frequency'])?$mailData['repayment_frequency']:"-"  }}</PaymentFrequency>
+</LoanRepayments>
+</newChanges>
 </finAccount>
 </Accounts>
 </finPOWERConnect>
