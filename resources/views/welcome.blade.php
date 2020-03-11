@@ -1728,8 +1728,7 @@
 
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-xs-12 control-label" for="jointapp_employment_period">Employment
-                                        Period</label>
+                                    <label class="col-xs-12 control-label" for="jointapp_employment_period">Employment Period<sup>*</sup></label>
                                     <div class="col-sm-6 col-xs-12 form-inline">
                                         <input type="text" class="form-control input_date" name="jointapp_employment_period_from" id="jointapp_employment_period_from" placeholder="DD / MM / YY" />
                                         <label for="jointapp_employment_period_from">From</label>

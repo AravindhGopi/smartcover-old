@@ -1,8 +1,9 @@
 @component('mail::message')
 # Online Application
-
+<br/>
 @component('mail::table')
-| Getting to Know you       |             |
+###Getting to Know you 
+|       |             |
 | ------------- |:-----------------:|
 | Are you over 18 years of age?                 | {{ isset($mailData['is_over_18'])?$mailData['is_over_18']:"-" }}      |
 | Residential status         | {{ isset($mailData['residential_status'])?$mailData['residential_status']:"-"  }} |
@@ -12,7 +13,8 @@
 @endcomponent
 
 @component('mail::table')
-| Personal Information       |              |
+###Personal Information
+|        |              |
 | ------------- |:-----------------:|
 | Title            | {{ isset($mailData['applicant_title'])?$mailData['applicant_title']:"-"  }}      |
 | Gender            | {{ isset($mailData['applicant_gender'])?$mailData['applicant_gender']:"-"  }}    |
@@ -41,7 +43,8 @@
 @endcomponent
 
 @component('mail::table')
-| Contact Information       |             |
+###Contact Information
+|        |             |
 | ------------- |:-----------------:|
 | Email        | {{ isset($mailData['applicant_email'])?$mailData['applicant_email']:"-"  }}      |
 | Mobile       | {{ isset($mailData['applicant_mobile'])?$mailData['applicant_mobile']:"-"  }} |
@@ -59,7 +62,8 @@
 @endcomponent
 
 @component('mail::table')
-| Employment Details       |              |
+###Employment Details
+|        |              |
 | ------------- |:-----------------:|
 | Employment status       | {{ isset($mailData['employment_status'])?$mailData['employment_status']:"-"  }}      |
 @if($mailData['employment_status'] == "Full Time Employed" || $mailData['employment_status'] == "Part Time Employed")
@@ -79,7 +83,8 @@
 @endcomponent
 
 @component('mail::table')
-| Vehicle Details       |              |
+###Vehicle Details
+|        |              |
 | ------------- |:-----------------:|
 | Vehicle make      | {{ isset($mailData['vehicle_make'])?$mailData['vehicle_make']:"-"  }} |
 | Vehicle model      | {{ isset($mailData['vehicle_model'])?$mailData['vehicle_model']:"-"  }} |
@@ -87,11 +92,12 @@
 | Vehicle Registration      | {{ isset($mailData['vehicle_registration'])?$mailData['vehicle_registration']:"-"  }} |
 | Registration owner      | {{ isset($mailData['registered_owner'])?$mailData['registered_owner']:"-"  }} |
 | Vehicle color      | {{ isset($mailData['vehicle_colour'])?$mailData['vehicle_colour']:"-"  }} |
-| I give Smartcover Finance permission to use the above vehicle as a security for my loan.      | {{ isset($mailData['vehicle_agreement'])?$mailData['vehicle_agreement']:"-"  }} |
+| I give Smartcover Finance permission to <br/> use the above vehicle as a security for my loan.      | {{ isset($mailData['vehicle_agreement'])?$mailData['vehicle_agreement']:"-"  }} |
 @endcomponent
 @if(isset($mailData['is_joint_application']) && $mailData['is_joint_application'] == "yes")
 @component('mail::table')
-| Joint Applicant Details       |              |
+###Joint Applicant Details
+|        |              |
 | ------------- |:-----------------:|
 | Residential status       | {{ isset($mailData['jointapp_residential_status'])?$mailData['jointapp_residential_status']:"-"  }}      |
 | Visa Expiry      | {{ isset($mailData['jointapp_visa_expiry'])?$mailData['jointapp_visa_expiry']:"-"  }} |
@@ -106,7 +112,7 @@
 | Suburb      | {{ isset($mailData['jointapp_current_suburb'])?$mailData['jointapp_current_suburb']:"-"  }} |
 | Town/city      | {{ isset($mailData['jointapp_current_city'])?$mailData['jointapp_current_city']:"-"  }} |
 | Postcode      | {{ isset($mailData['jointapp_current_postcode'])?$mailData['jointapp_current_postcode']:"-"  }} |
-| Time at this address      | {{ isset($mailData['jointapp_years_at_current_from'])?$mailData['jointapp_years_at_current_from']:"-/-/-"  }} - {{ isset($mailData['jointapp_years_at_current_to'])?$mailData['jointapp_years_at_current_to']:"-/-/-"  }} |
+| Time at this address      | {{ isset($mailData['jointapp_current_address_from_month'])?"01/".$mailData['jointapp_current_address_from_month']:"-/-"  }} / {{ isset($mailData['jointapp_current_address_from_year'])?$mailData['jointapp_current_address_from_year']:"-"  }} |
 | Type of identification      | {{ isset($mailData['jointapp_id_type'])?$mailData['jointapp_id_type']:"-"  }} |
 | Maritial Status      | {{ isset($mailData['jointapp_marital_status'])?$mailData['jointapp_marital_status']:"-"  }} |
 | Number of dependents      | {{ isset($mailData['jointapp_no_of_dependents'])?$mailData['jointapp_no_of_dependents']:"-"  }} |
@@ -124,7 +130,8 @@
 
 @if(isset($mailData['is_joint_application']) && $mailData['is_joint_application'] == "yes")
 @component('mail::table')
-| Joint Applicant Contact Information       |             |
+###Joint Applicant Contact Information
+|        |             |
 | ------------- |:-----------------:|
 | Email        | {{ isset($mailData['jointapp_applicant_email'])?$mailData['jointapp_applicant_email']:"-"  }}      |
 | Mobile       | {{ isset($mailData['jointapp_applicant_mobile'])?$mailData['jointapp_applicant_mobile']:"-"  }} |
@@ -144,7 +151,8 @@
 
 @if(isset($mailData['is_joint_application']) && $mailData['is_joint_application'] == "yes")
 @component('mail::table')
-| Joint Applicant: Employment Details       |              |
+###Joint Applicant: Employment Details
+|        |              |
 | ------------- |:-----------------:|
 | Employment status       | {{ isset($mailData['jointapp_employment_status'])?$mailData['jointapp_employment_status']:"-"  }}      |
 @if($mailData['jointapp_employment_status'] == "Full Time Employed" || $mailData['jointapp_employment_status'] == "Part Time Employed")
@@ -165,7 +173,8 @@
 @endif
 
 @component('mail::table')
-| Loan Details       |              |
+###Loan Details
+|        |              |
 | ------------- |:-----------------:|
 | Loan amount       | {{ isset($mailData['loan_amount'])?$mailData['loan_amount']:"-"  }}      |
 | Loan Reason      | {{ isset($mailData['loan_reason'])?$mailData['loan_reason']:"-"  }} |
@@ -175,8 +184,9 @@
 
 @if($mailData['payment_type'] == "Direct Debit")
 @component('mail::table')
-| Loan Repayment Details       |              |
-| ------------- |:-----------------:|
+###Loan Repayment Details
+|        |              |          |
+| ------------- |:-----------------:|---------------:|
 | Bank Account Number       | {{ isset($mailData['repayment_bank_account_number1'])?$mailData['repayment_bank_account_number1']:"-"  }} - {{ isset($mailData['repayment_bank_account_number2'])?$mailData['repayment_bank_account_number2']:"-"  }} - {{ isset($mailData['repayment_bank_account_number3'])?$mailData['repayment_bank_account_number3']:"-"  }} - {{ isset($mailData['repayment_bank_account_number4'])?$mailData['repayment_bank_account_number4']:"-"  }}    |
 | Account Name      | {{ isset($mailData['repayment_bank_account_name'])?$mailData['repayment_bank_account_name']:"-"  }} | {{ isset($mailData['repayment_bank_authorization'])?$mailData['repayment_bank_authorization']:"-"  }}      |
 | Name of the Authorizer      | {{ isset($mailData['repayment_authorizer_name'])?$mailData['repayment_authorizer_name']:"-"  }} | {{ isset($mailData['repayment_authorization'])?$mailData['repayment_authorization']:"-"  }}      |
@@ -186,7 +196,8 @@
 @endif
 
 @component('mail::table')
-| Privacy Waiver       |             |
+###Privacy Waiver
+|        |             |
 | ------------- |:-----------------:|
 | I confirm that I have read and understood the document before proceeding.       | 
 @endcomponent
