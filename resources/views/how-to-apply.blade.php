@@ -40,7 +40,8 @@
 
         .page_content ul li {
             font-weight: 700;
-            font-size: 13px;
+            font-size: 14px;
+            line-height:26px;
             margin-bottom: 5px;
         }
 
@@ -79,7 +80,7 @@
             text-transform: capitalize;
         }
         .container_small{
-            border: 1px solid #58585a;
+            border: 1px solid #67ae3d;
             border-radius: 5px;
             padding: 5vh;
         }
@@ -97,12 +98,12 @@
                     <li><a href="https://www.smartcover.co.nz/faq/">FAQ</a></li>
                     <li><a href="https://www.smartcover.co.nz/schedule-of-fees/">Schedule of Fees</a></li>
                     <li><a href="https://www.smartcover.co.nz/contact-us/">Contact Us</a></li>
-                    <li><a href="#">Online Application</a></li>
+                    
                 </ul>
             </div>
             <div class="act_table">
                 <div class="act_tablecell logo">
-                    <a href="index.html"><img src="/images/logo.jpg" alt="Logo"></a>
+                    <a href="https://loans.smartcover.co.nz/"><img src="/images/smartcover_logo.png" alt="Logo"></a>
                 </div>
                 <div class="act_tablecell call_sec">
                     <h4><span>Call Us Today</span><a href="tel:0508738765">0508 738 765</a><strong>Free Call</strong></h4>
@@ -123,7 +124,7 @@
                         <div class="inner_padding_wrap border-right">
                             <h1>How to Apply</h1>
 
-                            <p>The best and the quickest way to apply for a loan with Smartcover is to apply using our <a href="https://applynow.healthcarefinance.nz/">online application form</a>. The application takes around 5 minutes to complete. </p>
+                            <p>This application takes around 5 minutes to complete. </p>
 
                             <p>Before you start the online
                                 application process you will need:</p>
@@ -148,13 +149,11 @@
                                 <li><strong>Your last 3 months of bank statements</strong> – though this is requested after you have applied. We will send you a pending email asking for these to be sent through to us using a secure link to our bank statements portal. </li>
                             </ul>
                             <hr class="wp-block-separator">
-
-                            <h4>STEP ONE:</h4>
-                            <p>Visit our <a href="http://www.smartcover.co.nz">website</a> and click ‘Apply Online’. In addition, you can click ‘apply now’ at the bottom of this page. <br>If you are applying for a Vet Care loan and DO NOT have internet access, please request a paper application with your local vet clinic. </p>
-                            <h4>STEP TWO:</h4>
-                            <p> Fill in your details and attach your supporting documents. <br>Your documents will need to be in JPEG, PNG or PDF format to reduce issues with file format. Please ensure your details are correct and up to date.</p>
-                            <h4>STEP THREE:</h4>
-                            <p>Submit your application and wait to receive your pending email.<br>This email will contain a secure link for you to submit your last 3 months of bank statements as well as a request for any extra supporting documents and details required. We expect that you will receive this within an hour of submitting your application.</p>
+                            <p>A credit check will be carried out as part of the Application process. Please ensure all details you
+                        enter are accurate to enable us to correctly assess your application - as quickly as possible. Any
+                        inaccurate information could result in delays processing your application.</p>
+                           
+                           
                             <div class="wp-block-button is-style-squared"><a class="btn btn-lg wp-block-button__link has-text-color has-background" 
                                 href="/apply-now" style="background-color:#67ae3d;color:#ffffff"><strong>APPLY NOW</strong></a></div>
                                 <!-- href="https://applynow.healthcarefinance.nz/"  -->

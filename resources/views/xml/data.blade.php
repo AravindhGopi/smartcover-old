@@ -108,7 +108,14 @@
 <IndustryCode/>
 <Name>{{ isset($mailData['applicant_surname'])?$mailData['applicant_surname']:""  }}, {{ isset($mailData['applicant_first_name'])?$mailData['applicant_first_name']:""  }} </Name>
 <Notes>Visa Expiry: {{ isset($mailData['visa_expiry'])?$mailData['visa_expiry']:"NA"  }}
-, Best time to contact: {{ isset($mailData['best_time_to_contact'])?$mailData['best_time_to_contact']:"-"  }}
+Best time to contact: {{ isset($mailData['best_time_to_contact'])?$mailData['best_time_to_contact']:"-"  }}
+Payment Type: {{ isset($mailData['payment_type'])?$mailData['payment_type']:""  }}
+Bank Account: {{ isset($mailData['repayment_bank_account_number1'])?$mailData['repayment_bank_account_number1']:""  }}-{{ isset($mailData['repayment_bank_account_number2'])?$mailData['repayment_bank_account_number2']:""  }}-{{ isset($mailData['repayment_bank_account_number3'])?$mailData['repayment_bank_account_number3']:""  }}-{{ isset($mailData['repayment_bank_account_number4'])?$mailData['repayment_bank_account_number4']:""  }}
+Bank Name: {{ isset($mailData['bank_name'])?$mailData['bank_name']:""  }}
+Account Name: {{ isset($mailData['repayment_bank_account_name'])?$mailData['repayment_bank_account_name']:""  }}
+Name of the Authorizer: {{ isset($mailData['repayment_authorizer_name'])?$mailData['repayment_authorizer_name']:""  }}
+Repayment Start Date: {{ isset($mailData['payment_start_date_xml'])?$mailData['payment_start_date_xml']:""  }}
+Repayment Frequency: {{ isset($mailData['repayment_frequency'])?$mailData['repayment_frequency']:""  }}
 </Notes>
 <Resident>true</Resident>
 <Salutation/>
@@ -130,22 +137,22 @@
 <Item type="String" key="Status" userDefinedIndex="2">Pending</Item>
 <Item type="String" key="Car Rego" userDefinedIndex="3">{{ isset($mailData['vehicle_agreement'])?$mailData['vehicle_agreement']:"Vehicle Security - No"  }}</Item>
 <Item type="String" key="Income" userDefinedIndex="4">{{ isset($mailData['total_income'])? $mailData['total_income']:"" }}</Item>
-<Item type="Date" key="Application Date" userDefinedIndex="5">{{ isset($mailData['formattedDate'])?$mailData['formattedDate']:""  }}</Item>
+<Item type="Date"   key="Application Date" userDefinedIndex="5">{{ isset($mailData['formattedDate'])?$mailData['formattedDate']:""  }}</Item>
 <Item type="String" key="Account Type" userDefinedIndex="6">CCCFA</Item>
 <Item type="String" key="Loan Reason" userDefinedIndex="7">{{ isset($mailData['loan_reason'])?$mailData['loan_reason']:""  }}</Item>
 <Item type="String" key="Secured Signing" userDefinedIndex="8">{{ isset($mailData['secure_sign_agreed'])?"Secure Signing No":"Secure Signing Yes"  }}</Item>
 <Item type="String" key="Privacy Waiver" userDefinedIndex="9">{{ isset($mailData['privacy_act_agreement'])?$mailData['privacy_act_agreement']." Agreed":"No"  }}</Item>
 <Item type="Double" key="IncomeTotal">{{ isset($mailData['total_income'])? $mailData['total_income']:"" }}</Item>
-<Item type="Double" key="ExpensesTotal">{{ isset($mailData['living_cost_amount'])?$mailData['living_cost_amount']:""  }}</Item>
-<Item type="String" key="Notes">{{ isset($mailData['living_cost_type'])?"Living cost: ".$mailData['living_cost_type']:""  }}</Item>
+<Item type="Double" key="ExpensesTotal">{{ isset($mailData['expense_amount'])?$mailData['expense_amount']:""  }}</Item>
+<Item type="String" key="Notes">{{ isset($mailData['accomodation_type'])?$mailData['accomodation_type']:""  }}</Item>
 <Item type="Double" key="Income">{{ isset($mailData['income'])?$mailData['income']:""  }}</Item>
 <Item type="String" key="FrequencyPerAnnumIncome">{{ isset($mailData['income_frequency'])?$mailData['income_frequency']:""  }} </Item>
 <Item type="Double" key="Additional Income"></Item>
 <Item type="Double" key="Other Income">{{ isset($mailData['additional_income'])?$mailData['additional_income']:""  }}</Item>
-<Item type="String" key="FrequencyPerAnnumOthIncome">{{ isset($mailData['Is_additional_income'])?$mailData['Is_additional_income']:""  }}</Item>
-<Item type="String" key="NotesOthIncome">{{ isset($mailData['additional_income_source'])?$mailData['additional_income_source']:""  }}</Item>
-<Item type="Double" key="Living Cost: Rent">{{ isset($mailData['living_cost_amount'])?$mailData['living_cost_amount']:""  }}</Item>
-<Item type="String" key="FrequencyPerAnnumRent">{{ isset($mailData['livingcost_frequency'])?$mailData['livingcost_frequency']:""  }} </Item>
+<Item type="String" key="FrequencyPerAnnumOthIncome"></Item>
+<Item type="String" key="NotesOthIncome"></Item>
+<Item type="Double" key="Living Cost: Rent">{{ isset($mailData['expense_amount'])?$mailData['expense_amount']:""  }}</Item>
+<Item type="String" key="FrequencyPerAnnumRent">{{ isset($mailData['expense_frequency'])?$mailData['expense_frequency']:""  }}</Item>
 <Item type="Double" key="Liabilities"></Item>
 </ISKeyValueList>
 </UserData>
@@ -163,6 +170,7 @@
 <MaritalStatus>{{ isset($mailData['applicant_marital_status'])?$mailData['applicant_marital_status']:""  }}</MaritalStatus>
 <Occupation>{{ isset($mailData['employment_status'])?$mailData['employment_status']:""  }}</Occupation>
 <ResidentialStatus>{{ isset($mailData['residential_status'])?$mailData['residential_status']:""  }}</ResidentialStatus>
+<ResidencyStatus>{{ isset($mailData['accomodation_type'])?$mailData['accomodation_type']:""  }}</ResidencyStatus>
 <Title>{{ isset($mailData['applicant_title'])?$mailData['applicant_title']:""  }}</Title>
 
 <ContactMethods>
@@ -241,7 +249,7 @@
 <Suburb>{{ isset($mailData['current_suburb'])?$mailData['current_suburb']:""  }}</Suburb>
 <City>{{ isset($mailData['current_city'])?$mailData['current_city']:""  }}</City>
 <PostCode>{{ isset($mailData['current_postcode'])?$mailData['current_postcode']:""  }}</PostCode>
-<DateStart>{{ isset($mailData['years_at_current_from'])?$mailData['years_at_current_from']:""  }}</DateStart>
+<DateStart>{{ isset($mailData['current_address_from_year'])?$mailData['current_address_from_year']:"-"  }}-{{ isset($mailData['current_address_from_month'])?$mailData['current_address_from_month']."-01":"-"  }}</DateStart>
 <DateStop/>
 <Notes>Applicant</Notes>
 <ValueType>Applicant</ValueType>
@@ -261,6 +269,49 @@
 </Notes>
 </Employment>
 </Employments>
+
+@if(isset($mailData['applicant_id_type']) && $mailData['applicant_id_type'] == "NZ Drivers License")
+<IdentificationItems>
+   <IdentificationItem>
+      <DateExpiry>{{ isset($mailData['licence_expiry_year'])?$mailData['licence_expiry_year']:""  }}-{{ isset($mailData['licence_expiry_month'])?$mailData['licence_expiry_month']:""  }}-{{ isset($mailData['licence_expiry_date'])?$mailData['licence_expiry_date']:""  }}</DateExpiry>
+      <IdDateOfBirth>{{ isset($mailData['applicant_birth_year'])?$mailData['applicant_birth_year']:""  }}-{{ isset($mailData['applicant_birth_month'])?$mailData['applicant_birth_month']:""  }}-{{ isset($mailData['applicant_birth_date'])?$mailData['applicant_birth_date']:""  }}</IdDateOfBirth> 
+      <IdName>{{ isset($mailData['applicant_surname'])?$mailData['applicant_surname']:""  }}, {{ isset($mailData['applicant_first_name'])?$mailData['applicant_first_name']:""  }}</IdName>
+      <IdentificationTypeId pk="1">DL</IdentificationTypeId>
+      <Value>{{ isset($mailData['licence_number'])?$mailData['licence_number']:""  }}-{{ isset($mailData['version_number'])?$mailData['version_number']:"-"  }}</Value>
+   </IdentificationItem>
+</IdentificationItems>
+@endif
+
+
+@if(isset($mailData['applicant_id_type']) && $mailData['applicant_id_type'] == "NZ Passport")
+<IdentificationItems>
+   <IdentificationItem>
+      <DateIssue>{{ isset($mailData['passport_issue_year'])?$mailData['passport_issue_year']:""  }}-{{ isset($mailData['passport_issue_month'])?$mailData['passport_issue_month']:""  }}-{{ isset($mailData['passport_issue_date'])?$mailData['passport_issue_date']:""  }}</DateIssue>
+      <DateExpiry>{{ isset($mailData['passport_expiry_year'])?$mailData['passport_expiry_year']:"-"  }}-{{ isset($mailData['passport_expiry_month'])?$mailData['passport_expiry_month']:"-"  }}-{{ isset($mailData['passport_expiry_date'])?$mailData['passport_expiry_date']:"-"  }}</DateExpiry>
+      <IdDateOfBirth>{{ isset($mailData['applicant_birth_year'])?$mailData['applicant_birth_year']:""  }}-{{ isset($mailData['applicant_birth_month'])?$mailData['applicant_birth_month']:""  }}-{{ isset($mailData['applicant_birth_date'])?$mailData['applicant_birth_date']:""  }}</IdDateOfBirth> 
+      <IdName>{{ isset($mailData['applicant_surname'])?$mailData['applicant_surname']:""  }}, {{ isset($mailData['applicant_first_name'])?$mailData['applicant_first_name']:""  }}</IdName>
+      <IdentificationTypeId pk="1">NZP</IdentificationTypeId>
+      <Value>{{ isset($mailData['passport_number'])?$mailData['passport_number']:""  }}</Value>
+   </IdentificationItem>
+</IdentificationItems>
+@endif
+
+
+@if(isset($mailData['applicant_id_type']) && $mailData['applicant_id_type'] == "Overseas Passport")
+<IdentificationItems>
+   <IdentificationItem>
+      <DateIssue>{{ isset($mailData['passport_issue_year'])?$mailData['passport_issue_year']:""  }}-{{ isset($mailData['passport_issue_month'])?$mailData['passport_issue_month']:""  }}-{{ isset($mailData['passport_issue_date'])?$mailData['passport_issue_date']:""  }}</DateIssue>
+      <DateExpiry>{{ isset($mailData['passport_expiry_year'])?$mailData['passport_expiry_year']:"-"  }}-{{ isset($mailData['passport_expiry_month'])?$mailData['passport_expiry_month']:"-"  }}-{{ isset($mailData['passport_expiry_date'])?$mailData['passport_expiry_date']:"-"  }}</DateExpiry>
+      <IdDateOfBirth>{{ isset($mailData['applicant_birth_year'])?$mailData['applicant_birth_year']:""  }}-{{ isset($mailData['applicant_birth_month'])?$mailData['applicant_birth_month']:""  }}-{{ isset($mailData['applicant_birth_date'])?$mailData['applicant_birth_date']:""  }}</IdDateOfBirth> 
+      <IdName>{{ isset($mailData['applicant_surname'])?$mailData['applicant_surname']:""  }}, {{ isset($mailData['applicant_first_name'])?$mailData['applicant_first_name']:""  }}</IdName>
+      <IdentificationTypeId pk="1">OSP</IdentificationTypeId>
+      <Value>{{ isset($mailData['passport_number'])?$mailData['passport_number']:""  }}</Value>
+   </IdentificationItem>
+</IdentificationItems>
+@endif
+
+
+
 </finClient>
 <AccountHidden>false</AccountHidden>
 <AccountRoleId pk="1">B</AccountRoleId>
@@ -316,6 +367,7 @@
 <Name>{{ isset($mailData['jointapp_applicant_surname'])?$mailData['jointapp_applicant_surname']:""  }}, {{ isset($mailData['jointapp_applicant_first_name'])?$mailData['jointapp_applicant_first_name']:""  }}</Name>
 <Notes>{{ isset($mailData['jointapp_visa_expiry'])?$mailData['jointapp_visa_expiry']:""  }}
 {{ isset($mailData['jointapp_best_time_to_contact'])?$mailData['jointapp_best_time_to_contact']:""  }}
+
 </Notes>
 <Resident>true</Resident>
 <Salutation/>
@@ -343,16 +395,16 @@
 <Item type="String" key="Secured Signing" userDefinedIndex="8">{{ isset($mailData['secure_sign_agreed'])?$mailData['secure_sign_agreed']." Yes":"No"  }}</Item>
 <Item type="String" key="Privacy Waiver" userDefinedIndex="9">{{ isset($mailData['privacy_act_agreement'])?$mailData['privacy_act_agreement']." Agreed":"No"  }}</Item>
 <Item type="Double" key="IncomeTotal">{{ isset($mailData['joint_app_total']) && $mailData['joint_app_total'] != 0 ?$mailData['joint_app_total']:""  }}</Item>
-<Item type="Double" key="ExpensesTotal">{{ isset($mailData['jointapp_living_cost_amount'])?$mailData['jointapp_living_cost_amount']:""  }}</Item>
-<Item type="String" key="Notes">{{ isset($mailData['jointapp_living_cost_type'])?$mailData['jointapp_living_cost_type']:""  }}</Item>
+<Item type="Double" key="ExpensesTotal">{{ isset($mailData['jointapp_expense_amount'])?$mailData['jointapp_expense_amount']:""  }}</Item>
+<Item type="String" key="Notes">{{ isset($mailData['jointapp_accomodation_type'])?$mailData['jointapp_accomodation_type']:""  }}</Item>
 <Item type="Double" key="Income">{{ isset($mailData['jointapp_income'])?$mailData['jointapp_income']:""  }}</Item>
 <Item type="String" key="FrequencyPerAnnumIncome">{{ isset($mailData['jointapp_income_frequency'])?$mailData['jointapp_income_frequency']:""  }}</Item>
 <Item type="Double" key="Additional Income"></Item>
 <Item type="Double" key="Other Income">{{ isset($mailData['jointapp_additional_income'])?$mailData['jointapp_additional_income']:""  }}</Item>
-<Item type="String" key="FrequencyPerAnnumOthIncome">{{ isset($mailData['jointapp_Is_additional_income'])?$mailData['jointapp_Is_additional_income']:""  }}</Item>
-<Item type="String" key="NotesOthIncome">{{ isset($mailData['jointapp_additional_income_source'])?$mailData['jointapp_additional_income_source']:""  }}</Item>
-<Item type="Double" key="Living Cost: Rent">{{ isset($mailData['jointapp_living_cost_amount'])?$mailData['jointapp_living_cost_amount']:""  }}</Item>
-<Item type="String" key="FrequencyPerAnnumRent">{{ isset($mailData['jointapp_livingcost_frequency'])?$mailData['jointapp_livingcost_frequency']:""  }}</Item>
+<Item type="String" key="FrequencyPerAnnumOthIncome"></Item>
+<Item type="String" key="NotesOthIncome"></Item>
+<Item type="Double" key="Living Cost: Rent">{{ isset($mailData['jointapp_expense_amount'])?$mailData['jointapp_expense_amount']:""  }}</Item>
+<Item type="String" key="FrequencyPerAnnumRent">{{ isset($mailData['jointapp_expense_frequency'])?$mailData['jointapp_expense_frequency']:""  }}</Item>
 <Item type="Double" key="Liabilities"></Item>
 </ISKeyValueList>
 </UserData>
@@ -446,7 +498,7 @@
 <Suburb>{{ isset($mailData['jointapp_current_suburb'])?$mailData['jointapp_current_suburb']:""  }}</Suburb>
 <City>{{ isset($mailData['jointapp_current_city'])?$mailData['jointapp_current_city']:""  }} </City>
 <PostCode>{{ isset($mailData['jointapp_current_postcode'])?$mailData['jointapp_current_postcode']:""  }}</PostCode>
-<DateStart>{{ isset($mailData['jointapp_years_at_current_from'])?$mailData['jointapp_years_at_current_from']:""  }} </DateStart>
+<DateStart>{{ isset($mailData['jointapp_current_address_from_year'])?$mailData['jointapp_current_address_from_year']:"-"  }}-{{ isset($mailData['jointapp_current_address_from_month'])?$mailData['jointapp_current_address_from_month']."-01":"-"  }} </DateStart>
 <DateStop/>
 <Notes> Joint Applicant</Notes>
 <ValueType>Applicant</ValueType>
@@ -465,6 +517,47 @@
 </Notes>
 </Employment>
 </Employments>
+
+
+@if(isset($mailData['jointapp_id_type']) && $mailData['jointapp_id_type'] == "NZ Drivers License")
+<IdentificationItems>
+   <IdentificationItem>
+      <DateExpiry>{{ isset($mailData['jointapp_licence_expiry_year'])?$mailData['jointapp_licence_expiry_year']:""  }}-{{ isset($mailData['jointapp_licence_expiry_month'])?$mailData['jointapp_licence_expiry_month']:""  }}-{{ isset($mailData['jointapp_licence_expiry_date'])?$mailData['jointapp_licence_expiry_date']:""  }}</DateExpiry>
+      <IdDateOfBirth>{{ isset($mailData['jointapp_applicant_birth_year'])?$mailData['jointapp_applicant_birth_year']:""  }}-{{ isset($mailData['jointapp_applicant_birth_month'])?$mailData['jointapp_applicant_birth_month']:""  }}-{{ isset($mailData['jointapp_applicant_birth_date'])?$mailData['jointapp_applicant_birth_date']:""  }}</IdDateOfBirth> 
+      <IdName>{{ isset($mailData['jointapp_applicant_surname'])?$mailData['jointapp_applicant_surname']:""  }}, {{ isset($mailData['jointapp_applicant_first_name'])?$mailData['jointapp_applicant_first_name']:""  }}</IdName>
+      <IdentificationTypeId pk="1">DL</IdentificationTypeId>
+      <Value>{{ isset($mailData['jointapp_licence_number'])?$mailData['jointapp_licence_number']:""  }}-{{ isset($mailData['jointapp_version_number'])?$mailData['jointapp_version_number']:"-"  }}</Value>
+   </IdentificationItem>
+</IdentificationItems>
+@endif
+
+@if(isset($mailData['jointapp_id_type']) && $mailData['jointapp_id_type'] == "NZ Passport")
+<IdentificationItems>
+   <IdentificationItem>
+      <DateIssue></DateIssue>
+      <DateExpiry>{{ isset($mailData['jointapp_licence_expiry_year'])?$mailData['jointapp_licence_expiry_year']:""  }}-{{ isset($mailData['jointapp_licence_expiry_month'])?$mailData['jointapp_licence_expiry_month']:""  }}-{{ isset($mailData['jointapp_licence_expiry_date'])?$mailData['jointapp_licence_expiry_date']:""  }}</DateExpiry>
+      <IdDateOfBirth>{{ isset($mailData['jointapp_applicant_birth_year'])?$mailData['jointapp_applicant_birth_year']:""  }}-{{ isset($mailData['jointapp_applicant_birth_month'])?$mailData['jointapp_applicant_birth_month']:""  }}-{{ isset($mailData['jointapp_applicant_birth_date'])?$mailData['jointapp_applicant_birth_date']:""  }}</IdDateOfBirth> 
+      <IdName>{{ isset($mailData['jointapp_applicant_surname'])?$mailData['jointapp_applicant_surname']:""  }}, {{ isset($mailData['jointapp_applicant_first_name'])?$mailData['jointapp_applicant_first_name']:""  }}</IdName>
+      <IdentificationTypeId pk="1">NZP</IdentificationTypeId>
+      <Value>{{ isset($mailData['passport_number'])?$mailData['passport_number']:""  }}</Value>
+   </IdentificationItem>
+</IdentificationItems>
+@endif
+
+@if(isset($mailData['jointapp_id_type']) && $mailData['jointapp_id_type'] == "Overseas Passport")
+<IdentificationItems>
+   <IdentificationItem>
+      <DateIssue></DateIssue>
+      <DateExpiry>{{ isset($mailData['jointapp_licence_expiry_year'])?$mailData['jointapp_licence_expiry_year']:""  }}-{{ isset($mailData['jointapp_licence_expiry_month'])?$mailData['jointapp_licence_expiry_month']:""  }}-{{ isset($mailData['jointapp_licence_expiry_date'])?$mailData['jointapp_licence_expiry_date']:""  }}</DateExpiry>
+      <IdDateOfBirth>{{ isset($mailData['jointapp_applicant_birth_year'])?$mailData['jointapp_applicant_birth_year']:""  }}-{{ isset($mailData['jointapp_applicant_birth_month'])?$mailData['jointapp_applicant_birth_month']:""  }}-{{ isset($mailData['jointapp_applicant_birth_date'])?$mailData['jointapp_applicant_birth_date']:""  }}</IdDateOfBirth> 
+      <IdName>{{ isset($mailData['jointapp_applicant_surname'])?$mailData['jointapp_applicant_surname']:""  }}, {{ isset($mailData['jointapp_applicant_first_name'])?$mailData['jointapp_applicant_first_name']:""  }}</IdName>
+      <IdentificationTypeId pk="1">OSP</IdentificationTypeId>
+      <Value>{{ isset($mailData['passport_number'])?$mailData['passport_number']:""  }}</Value>
+   </IdentificationItem>
+</IdentificationItems>
+@endif
+
+
 </finClient>
 <AccountHidden>false</AccountHidden>
 <AccountRoleId pk="1">B</AccountRoleId>
@@ -513,42 +606,7 @@
 </SecurityStmt>
 @endif
 
-<newChanges>
-<DateFromCurrentAddress>{{ isset($mailData['current_address_from_year'])?$mailData['current_address_from_year']:"-"  }}-{{ isset($mailData['current_address_from_month'])?$mailData['current_address_from_month']."-01":"-"  }}</DateFromCurrentAddress>  
-<IdentificationType>{{ isset($mailData['applicant_id_type'])?$mailData['applicant_id_type']:"-"  }}</IdentificationType>
-<LicenceNumber>{{ isset($mailData['licence_number'])?$mailData['licence_number']:"-"  }}</LicenceNumber>
-<licenceVersionNumber>{{ isset($mailData['version_number'])?$mailData['version_number']:"-"  }}</licenceVersionNumber>
-<LicenceExpiryDate>{{ isset($mailData['licence_expiry_year'])?$mailData['licence_expiry_year']:"-"  }}-{{ isset($mailData['licence_expiry_month'])?$mailData['licence_expiry_month']:"-"  }}-{{ isset($mailData['licence_expiry_date'])?$mailData['licence_expiry_date']:"-"  }}</LicenceExpiryDate>
-<PassportNumber>{{ isset($mailData['passport_number'])?$mailData['passport_number']:"-"  }}</PassportNumber>
-<DateOfIssue>{{ isset($mailData['passport_issue_year'])?$mailData['passport_issue_year']:"-"  }}-{{ isset($mailData['passport_issue_month'])?$mailData['passport_issue_month']:"-"  }}-{{ isset($mailData['passport_issue_date'])?$mailData['passport_issue_date']:"-"  }}</DateOfIssue>
-<PassportExpiryDate>{{ isset($mailData['passport_expiry_year'])?$mailData['passport_expiry_year']:"-"  }}-{{ isset($mailData['passport_expiry_month'])?$mailData['passport_expiry_month']:"-"  }}-{{ isset($mailData['passport_expiry_date'])?$mailData['passport_expiry_date']:"-"  }}</PassportExpiryDate>
-<AccomodationType>{{ isset($mailData['accomodation_type'])?$mailData['accomodation_type']:"-"  }}</AccomodationType>
-<ExpenseAmount>{{ isset($mailData['expense_amount'])?$mailData['expense_amount']:"-"  }}</ExpenseAmount>
-<ExpenseFrequency>{{ isset($mailData['expense_frequency'])?$mailData['expense_frequency']:"-"  }}</ExpenseFrequency>
-<!-- For Joint Applications-->
-<JointAppDetails>
-<DateFromCurrentAddress>{{ isset($mailData['jointapp_current_address_from_year'])?$mailData['jointapp_current_address_from_year']:"-"  }}-{{ isset($mailData['jointapp_current_address_from_month'])?$mailData['jointapp_current_address_from_month']."-01":"-"  }}</DateFromCurrentAddress>  
-<IdentificationType>{{ isset($mailData['jointapp_id_type'])?$mailData['jointapp_id_type']:"-"  }}</IdentificationType>
-<LicenceNumber>{{ isset($mailData['jointapp_licence_number'])?$mailData['jointapp_licence_number']:"-"  }}</LicenceNumber>
-<licenceVersionNumber>{{ isset($mailData['jointapp_version_number'])?$mailData['jointapp_version_number']:"-"  }}</licenceVersionNumber>
-<PassportNumber>{{ isset($mailData['jointapp_passport_number'])?$mailData['jointapp_passport_number']:"-"  }}</PassportNumber>
-<DateOfIssue>{{ isset($mailData['jointapp_passport_issue_year'])?$mailData['jointapp_passport_issue_year']:"-"  }}-{{ isset($mailData['jointapp_passport_issue_month'])?$mailData['jointapp_passport_issue_month']:"-"  }}-{{ isset($mailData['jointapp_passport_issue_date'])?$mailData['jointapp_passport_issue_date']:"-"  }}</DateOfIssue>
-<PassportExpiryDate>{{ isset($mailData['jointapp_passport_expiry_year'])?$mailData['jointapp_passport_expiry_year']:"-"  }}-{{ isset($mailData['jointapp_passport_expiry_month'])?$mailData['jointapp_passport_expiry_month']:"-"  }}-{{ isset($mailData['jointapp_passport_expiry_date'])?$mailData['jointapp_passport_expiry_date']:"-"  }}</PassportExpiryDate>
-<AccomodationType>{{ isset($mailData['jointapp_accomodation_type'])?$mailData['jointapp_accomodation_type']:"-"  }}</AccomodationType>
-<ExpenseAmount>{{ isset($mailData['jointapp_expense_amount'])?$mailData['jointapp_expense_amount']:"-"  }}</ExpenseAmount>
-<ExpenseFrequency>{{ isset($mailData['jointapp_expense_frequency'])?$mailData['jointapp_expense_frequency']:"-"  }}</ExpenseFrequency>
-</JointAppDetails>
 
-<PaymentType>{{ isset($mailData['payment_type'])?$mailData['payment_type']:"-"  }}</PaymentType>
-<LoanRepayments>
-<BankAccountNumber>{{ isset($mailData['repayment_bank_account_number1'])?$mailData['repayment_bank_account_number1']:"-"  }}-{{ isset($mailData['repayment_bank_account_number2'])?$mailData['repayment_bank_account_number2']:"-"  }}-{{ isset($mailData['repayment_bank_account_number3'])?$mailData['repayment_bank_account_number3']:"-"  }}-{{ isset($mailData['repayment_bank_account_number4'])?$mailData['repayment_bank_account_number4']:"-"  }}</BankAccountNumber>
-<AccountName>{{ isset($mailData['repayment_bank_account_name'])?$mailData['repayment_bank_account_name']:"-"  }}</AccountName>
-<AccountNameCheck>{{ isset($mailData['repayment_bank_authorization'])?$mailData['repayment_bank_authorization']:"-"  }}</AccountNameCheck>
-<NameOfTheAuthorizer>{{ isset($mailData['repayment_authorizer_name'])?$mailData['repayment_authorizer_name']:"-"  }}</NameOfTheAuthorizer>
-<PaymentStartDate>{{ isset($mailData['payment_start_date_xml'])?$mailData['payment_start_date_xml']:"-"  }}</PaymentStartDate>
-<PaymentFrequency>{{ isset($mailData['repayment_frequency'])?$mailData['repayment_frequency']:"-"  }}</PaymentFrequency>
-</LoanRepayments>
-</newChanges>
 </finAccount>
 </Accounts>
 </finPOWERConnect>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Mail\ProfileDetail;
 use App\Mail\TestMail;
 use Carbon\Carbon;
@@ -10,13 +11,18 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\View;
-use Intervention\Image\ImageManagerStatic as Image;
+// use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\Log;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class HomeController extends Controller
 {
     public function index() {
-        return view('welcome');
+        $category = Category::all();
+        $data['categories'] = $category;
+        // $data['loan'] = array();
+        $data['loanID'] = '0';
+        return view('welcome')->with('data',$data);
     }
 
     public function thanks() {
@@ -26,7 +32,13 @@ class HomeController extends Controller
     public function uploadData(Request $request) {
         $log_data = [];
         $data = Input::all();
-        // dd($data);
+        $newpdf = null;
+        if($data['payment_type'] == "Direct Debit"){
+            $pdf = PDF::loadView('pdf',['AC1' => $data['repayment_bank_account_number1'],'AC2' => $data['repayment_bank_account_number2'],'AC3' => $data['repayment_bank_account_number3'],'AC4' => $data['repayment_bank_account_number4'],'ACName' => $data['repayment_bank_account_name'],'AuthorizerName' => $data['repayment_authorizer_name'],'StartDate' => $data['repayment_start_date'],'Frequency' => $data['repayment_frequency'], 'bank_name'=> $data['bank_name']]);
+            $newpdf = $pdf->stream('testfile.pdf')
+               ->header('Content-Type','application/pdf');
+        }
+        //  dd($data);
         //$emails = ['bejoy@mello.co.nz'];
         $date = Carbon::now();
         $newdate = Carbon::now();
@@ -244,14 +256,16 @@ class HomeController extends Controller
         echo "</pre>";
         die("");*/
         // $data['secure_sign_agreed'] = isset($data['secure_sign_agreed'])?$data['secure_sign_agreed']:"no";
-        //$emails = ['bejoy@mello.co.nz'];
-        // $emails = ['bejoy@mello.co.nz'];
-        $emails = ['j.aravindhgopi@gmail.com','lovelyaravindh@gmail.com'];
+        
+        //$emails = ['bejoy@mello.co.nz', 'support@mello.co.nz'];
+        $emails = ['finance@smartcover.co.nz', 'smartcoverapps@gmail.com'];
+        // $emails = ['j.aravindhgopi@gmail.com'];
+        //$emails = ['suganya@ibtemail.com','bejoy@mello.co.nz'];
         $output=View::make('xml.data')->with('mailData', $data)->render();
         $xml = "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n" . $output;
         Log::debug("Here");
         Mail::to($emails)
-            ->send(new ProfileDetail($data,$xml));
+            ->send(new ProfileDetail($data,$xml,$newpdf));
             Log::debug("Here2");
         //Storage::put('file-submission-log/'.time().'-all-data.txt', s erialize($data), 'public');
         Storage::put('file-submission-log/'.time().'-data.txt', serialize($log_data), 'public');
@@ -264,7 +278,7 @@ class HomeController extends Controller
         //die("qwe");
         $output=View::make('xml.data')->render();
         $xml = "<?xml version=\"1.0\" ?>\n" . $output;
-        Mail::to("vipin@festinmob.com")
+        Mail::to("bejoy@mello.co.nz")
             ->send(new TestMail(array("view"=>$xml)));
         die("test");
     }
@@ -287,5 +301,20 @@ class HomeController extends Controller
 
     public function testSubmit() {
 
+    }
+    public function export_pdf()
+    {
+      // Fetch all customers from database
+      //$data = Customer::get();
+      // Send data to the view using loadView function of PDF facade
+      //$data = array ( 'Name' => 'Karthik', 'Dob' => '12-10-2002');
+    //   $pdf = PDF::loadView('pdf',['name' => 'Victoria']);
+     $pdf = PDF::loadView('pdf');
+      // If you want to store the generated pdf to the server then you can use the store function
+      //$pdf->save(storage_path().'_filename.pdf');
+      // Finally, you can download the file using download function
+     // return $pdf->download('LoanRepayments.pdf');
+     return $pdf->stream('testfile.pdf')
+               ->header('Content-Type','application/pdf');
     }
 }
