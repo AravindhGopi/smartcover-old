@@ -181,7 +181,7 @@
             </form>
 
             <div class="col-xs-4 col-md-4 text-right" style="padding-bottom: 5px;padding-right: 22px;">
-              <span class="loan_number" id="loan_number_display" style="display: none">Loan Number : <span id="loan_number_from_db">78979</span></span>
+              <span class="loan_number" id="loan_number_display" style="display: ">Loan Number : <span id="loan_number_from_db">{{$data['loan'][0]->loan_number}}</span></span>
             </div>
 
           </div>
@@ -200,7 +200,7 @@
                           <span></span>
                           <h4>How much amount do you need?</h4>
                           <div class="rangeslider-wrap">
-                            <input type="range" min="500" max="15000" step="100" id="loan_amount" labels="" name="loan_amount">
+                            <input type="range" min="500" max="15000" step="100" labels="" id="loan_amount" name="loan_amount">
                           </div>
                           <div class="range">
                             <small class="min pull-left">$500</small>
@@ -217,12 +217,25 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="loan_category" class="col-xs-12">Purpose of loan?<sup>*</sup></label>
+                      <label for="loan_reason" class="col-xs-12">Purpose of loan?<sup>*</sup></label>
+                      {{$data['loan'][0]->applicant_date_of_birth }}
+                      <div class="col-xs-12 col-md-12">
+                        <select name="loan_reason" id="loan_reason" required>
+                          <option value="">Please Select</option>
+                          <option value="Automotive repairs" {{ ($data['loan'][0]->loan_reason == "Automotive repairs") ? 'selected' : '' }}>Automotive repairs</option>
+                          <option value="Mags and tyres" {{ ($data['loan'][0]->loan_reason == "Mags and tyres") ? 'selected' : ''}}>Mags and tyres</option>
+                          <option value="Personal loan" {{ ($data['loan'][0]->loan_reason == "Personal loan") ? 'selected' : ''}}>Personal loan</option>
+                          <option value="Veterinary care" {{ ($data['loan'][0]->loan_reason == "Veterinary care") ? 'selected' : ''}}>Veterinary care</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="loan_category" class="col-xs-12">Category<sup>*</sup></label>
                       <div class="col-xs-12 col-md-12">
                         <select name="loan_category" id="loan_category" required>
                           <option value="">Please Select</option>
                           @foreach ($data['categories'] as $category)
-                          <option value="{{$category->id}}">{{$category->category_name}}</option>
+                          <option value="{{$category->id}}" {{ ($data['loan'][0]->category_id == $category->id) ? 'selected' : ''}} >{{$category->category_name}}</option>
                           @endforeach
                         </select>
                       </div>
@@ -256,27 +269,27 @@
                     </div>
                     <div class="form-group input_pad">
                       <div class="col-xs-12 col-md-12">
-                        <input type="text" id="applicant_first_name" name="applicant_first_name" placeholder="First Name *" required>
+                        <input type="text" id="applicant_first_name" value="{{ $data['loan'][0]->applicant_first_name }}" name="applicant_first_name" placeholder="First Name *" required>
                       </div>
                     </div>
                     <div class="form-group input_pad">
                       <div class="col-xs-12 col-md-12">
-                        <input type="text" id="applicant_middle_name" name="applicant_middle_name" placeholder="Middle Name(s) (optional)">
+                        <input type="text" id="applicant_middle_name" value="{{ $data['loan'][0]->applicant_middle_name }}" name="applicant_middle_name" placeholder="Middle Name(s) (optional)">
                       </div>
                     </div>
                     <div class="form-group input_pad">
                       <div class="col-xs-12 col-md-12">
-                        <input type="text" id="applicant_surname" name="applicant_surname" placeholder="Last Name *" required>
+                        <input type="text" id="applicant_surname" value="{{ $data['loan'][0]->applicant_surname }}" name="applicant_surname" placeholder="Last Name *" required>
                       </div>
                     </div>
                     <div class="form-group input_pad">
                       <div class="col-xs-12 col-md-12">
-                        <input type="text" id="applicant_mobile" name="applicant_mobile" placeholder="Mobile *" required>
+                        <input type="text" id="applicant_mobile" value="{{ $data['loan'][0]->applicant_mobile }}" name="applicant_mobile" placeholder="Mobile *" required>
                       </div>
                     </div>
                     <div class="form-group input_pad">
                       <div class="col-xs-12 col-md-12">
-                        <input type="text" id="applicant_email" name="applicant_email" placeholder="Email Address *" required>
+                        <input type="text" id="applicant_email"  value="{{ $data['loan'][0]->applicant_email }}" name="applicant_email" placeholder="Email Address *" required>
                       </div>
                     </div>
                     <div class="form-group">
@@ -286,7 +299,7 @@
                         <div class="joint_application">
                           <div class="radio-toolbar">
                             <p>Title</p>
-                            <input type="radio" id="is_joint_application_1" class="joint_app_Selection" name="is_joint_application" value="yes" required>
+                            <input type="radio" id="is_joint_application_1" class="joint_app_Selection" name="is_joint_application" value="yes">
                             <label for="is_joint_application_1">Yes</label>
                             <input type="radio" id="is_joint_application_2" class="joint_app_Selection" name="is_joint_application" value="no">
                             <label for="is_joint_application_2">No</label>
@@ -319,7 +332,7 @@
                     <div class="nav_sec">
                       <!-- <a href="javascript:void(0)" data-id="tab0next" class="pull-left prev-step back_btn">
                         <i class="fa fa-angle-left" aria-hidden="true"></i> Back </a> -->
-                      <input type="hidden" value="{{$data['loanID']}}" id="loanID" />
+                      <input type="hidden" value="{{$data['loan'][0]->id}}" id="loanID" />
                       <a href="javascript:void(0)" data-tabid="0" data-id="tab0next" class="pull-right  btn-next main_button">Next</a>
                     </div>
                   </fieldset>
@@ -336,8 +349,10 @@
                       <label class="control-label col-xs-12" for="applicant_date_of_birth">Date of birth <sup>*</sup>
                       </label>
                       <div class="col-md-4">
+                      
                         <select class="form-control col-md-4" name="applicant_birth_date" id="applicant_birth_date" required>
-                          <option value="">Date</option> @for ($i = 1; $i <= 31; $i++) <option value="{{ $i < 10?"0".$i:$i }}">{{ $i }}
+                          <option value="">Date</option> @for ($i = 1; $i <= 31; $i++) 
+                          <option value="{{ $i < 10?"0".$i:$i }}" >{{ $i }}
                             </option> @endfor
                         </select>
                       </div>
@@ -1937,7 +1952,6 @@
   <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-8216c69d01441f36c0ea791ae2d4469f0f8ff5326f00ae2d00e4bb7d20e24edb.js"></script>
   <script src="https://rawgit.com/andreruffert/rangeslider.js/develop/dist/rangeslider.min.js"></script>
   <script id="rendered-js">
-    var loanAmount = 7800;
     $('input[type="range"]').rangeslider({
       // Feature detection the default is `true`.
       // Set this to `false` if you want to use
@@ -1970,12 +1984,11 @@
       onSlide: function(position, value) {
         var $handle = this.$range.find('.rangeslider__handle__value');
         $handle.text(this.value);
-        loanAmount = value;
       },
       // Callback function
       onSlideEnd: function(position, value) {}
     });
-    
+
 
     /**
      * Dynamic Store Name changes on click Category
@@ -2009,7 +2022,7 @@
     function save(tabpanel) {
       var loanID = $("#loanID").val();
       if (tabpanel == 0) {
-        var loan_amount = loanAmount;
+        var loan_amount = $("#loan_amount").val();
         var loan_reason = $("#loan_reason").val();
         var loan_category = $("#loan_category").val();
         var loan_agent = $("#loan_agent").val();
@@ -2054,7 +2067,7 @@
             success: function(res) {
               if (res) {
                 debugger;
-                $("#loanID").val(res.id);
+                $("#loanID").val(res.loan_id);
                 $("#loan_number_display").show();
                 $("#loan_number_from_db").html(res.loan_number);
               } else {

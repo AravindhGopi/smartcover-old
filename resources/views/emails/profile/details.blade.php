@@ -165,7 +165,7 @@
 @endif
 | Income      | {{ isset($mailData['jointapp_income'])?$mailData['jointapp_income']:"-"  }} |
 | Income frequency      | {{ isset($mailData['jointapp_income_frequency'])?$mailData['jointapp_income_frequency']:"-"  }} |
-| | additional Income      | {{ isset($mailData['jointapp_additional_income'])?$mailData['jointapp_additional_income']:"-"  }} |
+| Additional Income      | {{ isset($mailData['jointapp_additional_income'])?$mailData['jointapp_additional_income']:"-"  }} |
 | Accomodation Type      | {{ isset($mailData['jointapp_accomodation_type'])?$mailData['jointapp_accomodation_type']:"-"  }} |
 | Expense Amount      | {{ isset($mailData['jointapp_expense_amount'])?$mailData['jointapp_expense_amount']:"-"  }} |
 | Expense Frequency      | {{ isset($mailData['jointapp_expense_frequency'])?$mailData['jointapp_expense_frequency']:"-"  }} |
@@ -188,6 +188,7 @@
 |        |              |          |
 | ------------- |:-----------------:|---------------:|
 | Bank Account Number       | {{ isset($mailData['repayment_bank_account_number1'])?$mailData['repayment_bank_account_number1']:"-"  }} - {{ isset($mailData['repayment_bank_account_number2'])?$mailData['repayment_bank_account_number2']:"-"  }} - {{ isset($mailData['repayment_bank_account_number3'])?$mailData['repayment_bank_account_number3']:"-"  }} - {{ isset($mailData['repayment_bank_account_number4'])?$mailData['repayment_bank_account_number4']:"-"  }}    |
+| Name of the Bank          | {{ isset($mailData['bank_name'])?$mailData['bank_name']:"-" }} |
 | Account Name      | {{ isset($mailData['repayment_bank_account_name'])?$mailData['repayment_bank_account_name']:"-"  }} | {{ isset($mailData['repayment_bank_authorization'])?$mailData['repayment_bank_authorization']:"-"  }}      |
 | Name of the Authorizer      | {{ isset($mailData['repayment_authorizer_name'])?$mailData['repayment_authorizer_name']:"-"  }} | {{ isset($mailData['repayment_authorization'])?$mailData['repayment_authorization']:"-"  }}      |
 | Payment Start Date      | {{ isset($mailData['repayment_start_date'])?$mailData['repayment_start_date']:"-"  }} |

@@ -50,7 +50,7 @@
         </div>
         <div class="act_table">
             <div class="act_tablecell logo">
-                <a href="index.html"><img src="/images/logo.jpg" alt="Logo"></a>
+                <a href="https://loans.smartcover.co.nz/"><img src="/images/smartcover_logo.png" alt="Logo"></a>
             </div>
             <div class="act_tablecell call_sec">
                 <h4><span>Call Us Today</span><a href="tel:0508738765">0508 738 765</a><strong>Free Call</strong></h4>
@@ -74,7 +74,7 @@
 
  
 
- <p>If you have applied outside of our office hours for a Vet Emergency, please call 0508 738 765 to notify the Afterhours team that the application is URGENT.  Please be advised that there is a $50 fee to Process applications after hours. </p>
+ <p>If you have applied outside of our office hours your application will be processed on the next business day. </p>
             </div>
         </div>
     </section>

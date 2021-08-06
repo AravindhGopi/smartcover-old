@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'admin@applynow.smartcover.co.nz'),
-        'name' => env('MAIL_FROM_NAME', 'Smartcover'),
+        'address' => env('MAIL_FROM_ADDRESS', 'web@smartcover.co.nz'),
+        'name' => env('MAIL_FROM_NAME', 'Smartcover Finance'),
     ],
 
     /*
